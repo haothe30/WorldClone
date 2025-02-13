@@ -1,0 +1,11 @@
+Broom.png
+size:788,180
+filter:Linear,Linear
+pma:true
+bot1
+bounds:534,9,31,31
+bot2
+bounds:534,42,250,135
+cay
+bounds:2,2,175,530
+rotate:90

@@ -1,0 +1,16 @@
+27_Lens.png
+size:336,84
+filter:Linear,Linear
+pma:true
+L
+bounds:150,10,72,71
+rotate:90
+L1
+bounds:296,47,35,35
+R
+bounds:223,10,72,71
+rotate:90
+R1
+bounds:296,10,35,35
+hop
+bounds:2,2,146,80

@@ -1,0 +1,129 @@
+{
+"skeleton": {
+	"hash": "wVVA04gPBkI",
+	"spine": "4.2.32",
+	"x": -128,
+	"y": -148.5,
+	"width": 256,
+	"height": 297,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root" },
+	{ "name": "nuoc", "parent": "bone", "rotation": 24.72, "x": 49.35, "y": 125.7 },
+	{ "name": "nuoc2", "parent": "bone", "rotation": 24.72, "x": 49.35, "y": 125.7 }
+],
+"slots": [
+	{ "name": "bong", "bone": "bone" },
+	{ "name": "voi", "bone": "bone", "attachment": "voi" },
+	{ "name": "nuoc", "bone": "nuoc" },
+	{ "name": "nuoc2", "bone": "nuoc2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"bong": {
+				"bong": {
+					"x": 120,
+					"y": 23,
+					"scaleX": 0.9281,
+					"scaleY": 0.9281,
+					"rotation": -0.04,
+					"width": 292,
+					"height": 336
+				}
+			},
+			"nuoc": {
+				"nuoc": { "x": 22.9, "y": -159.23, "rotation": -24.72, "width": 208, "height": 258 }
+			},
+			"nuoc2": {
+				"nuoc": { "x": 22.9, "y": -159.23, "rotation": -24.72, "width": 208, "height": 258 }
+			},
+			"voi": {
+				"voi": { "width": 256, "height": 297 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"bong": {
+				"attachment": [
+					{ "name": "bong" }
+				]
+			},
+			"nuoc": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.5667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "nuoc" }
+				]
+			},
+			"nuoc2": {
+				"rgba": [
+					{ "time": 0.0333, "color": "ffffffff" },
+					{ "time": 0.2667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffff00" },
+					{ "time": 0.5333, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "name": "nuoc" }
+				]
+			}
+		},
+		"bones": {
+			"nuoc": {
+				"scale": [
+					{ "x": 0.7, "y": 0.32 },
+					{ "time": 0.5667 },
+					{ "time": 0.6, "x": 0.7, "y": 0.32 }
+				]
+			},
+			"nuoc2": {
+				"scale": [
+					{ "x": 0.85, "y": 0.66 },
+					{ "time": 0.2667 },
+					{ "time": 0.3, "x": 0.7, "y": 0.32 },
+					{ "time": 0.6, "x": 0.85, "y": 0.66 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"bong": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "bong" }
+				]
+			},
+			"nuoc": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "nuoc" }
+				]
+			},
+			"nuoc2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "nuoc" }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,8 @@
+Den nhap nhay.png
+size:1240,1076
+filter:Linear,Linear
+pma:true
+anh sang
+bounds:2,2,636,1069
+den
+bounds:640,18,597,1053

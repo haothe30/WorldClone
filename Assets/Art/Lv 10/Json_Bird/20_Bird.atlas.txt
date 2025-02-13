@@ -1,0 +1,11 @@
+20_Bird.png
+size:180,108
+filter:Linear,Linear
+pma:true
+body
+bounds:2,2,103,109
+rotate:90
+canh back
+bounds:113,65,63,40
+canh front
+bounds:113,24,64,39

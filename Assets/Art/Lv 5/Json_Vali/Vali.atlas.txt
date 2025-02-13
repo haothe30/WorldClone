@@ -1,0 +1,10 @@
+Vali.png
+size:1888,508
+filter:Linear,Linear
+pma:true
+va li 1
+bounds:1106,20,484,777
+rotate:90
+va li 2
+bounds:2,2,502,1102
+rotate:90

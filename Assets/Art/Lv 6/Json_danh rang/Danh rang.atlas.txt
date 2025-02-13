@@ -1,0 +1,9 @@
+Danh rang.png
+size:56,28
+filter:Linear,Linear
+pma:true
+Layer 25
+bounds:36,7,16,15
+rotate:90
+Layer 26
+bounds:2,2,32,21

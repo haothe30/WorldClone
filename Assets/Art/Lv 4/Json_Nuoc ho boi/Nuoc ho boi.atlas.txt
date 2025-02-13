@@ -1,0 +1,20 @@
+Nuoc ho boi.png
+size:2040,472
+filter:Linear,Linear
+pma:true
+Fx
+bounds:1504,2,465,426
+rotate:90
+bom
+bounds:1932,91,110,101
+rotate:90
+nuoc ban
+bounds:2,2,465,749
+rotate:90
+nuoc may bom
+bounds:1932,203,106,264
+nuoc sach
+bounds:753,2,465,749
+rotate:90
+van
+bounds:1932,7,82,82

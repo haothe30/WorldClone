@@ -1,0 +1,15 @@
+Kitchen sink.png
+size:448,748
+filter:Linear,Linear
+pma:true
+Fx
+bounds:2,280,465,426
+rotate:90
+bat
+bounds:344,82,52,51
+nuoc
+bounds:2,2,340,276
+nuoc voi
+bounds:430,602,16,143
+voi nuoc
+bounds:344,135,88,143

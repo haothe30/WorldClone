@@ -1,0 +1,9 @@
+Facial Wash.png
+size:344,132
+filter:Linear,Linear
+pma:true
+chai
+bounds:2,2,127,306
+rotate:90
+giotSRM
+bounds:310,78,31,51

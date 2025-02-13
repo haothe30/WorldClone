@@ -1,0 +1,6 @@
+Fx.png
+size:172,88
+filter:Linear,Linear
+pma:true
+2
+bounds:2,2,165,83

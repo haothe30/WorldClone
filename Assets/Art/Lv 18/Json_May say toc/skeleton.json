@@ -1,0 +1,75 @@
+{
+"skeleton": {
+	"hash": "64Tkvn6dR00",
+	"spine": "4.2.32",
+	"x": -113.91,
+	"y": -158.27,
+	"width": 186,
+	"height": 220,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "say", "parent": "root", "rotation": -154.31, "x": -78.93, "y": -10.92 }
+],
+"slots": [
+	{ "name": "say toc", "bone": "root", "attachment": "say toc" },
+	{ "name": "say", "bone": "say" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"say": {
+				"fx": {
+					"type": "mesh",
+					"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+					"triangles": [ 1, 2, 3, 1, 3, 0 ],
+					"vertices": [ 2.11, 51.35, 106.55, 29.77, 77.62, -50.16, -18.41, -11.11 ],
+					"hull": 4,
+					"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+					"width": 104,
+					"height": 85
+				}
+			},
+			"say toc": {
+				"say toc": { "x": -20.91, "y": -48.27, "width": 186, "height": 220 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"say": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "name": "fx" }
+				]
+			}
+		},
+		"bones": {
+			"say": {
+				"scale": [
+					{ "x": 0.438, "y": 0.438 },
+					{ "time": 0.3333 }
+				]
+			}
+		}
+	},
+	"idle": {},
+	"idle2": {
+		"slots": {
+			"say": {
+				"attachment": [
+					{ "name": "fx" }
+				]
+			}
+		}
+	}
+}
+}

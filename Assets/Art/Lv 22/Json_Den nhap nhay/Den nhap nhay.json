@@ -1,0 +1,62 @@
+{
+"skeleton": {
+	"hash": "NIx/GX8P8CY",
+	"spine": "4.2.32",
+	"x": -331.09,
+	"y": -487.93,
+	"width": 636,
+	"height": 1069,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "anh sang", "bone": "root", "attachment": "anh sang" },
+	{ "name": "den", "bone": "root", "attachment": "den" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"anh sang": {
+				"anh sang": { "x": -13.09, "y": 46.57, "width": 636, "height": 1069 }
+			},
+			"den": {
+				"den": { "x": -12.59, "y": 54.57, "width": 597, "height": 1053 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"anh sang": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 2, "color": "ffffff00" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.6667, "color": "ffffff00" },
+					{ "time": 5.3333, "color": "ffffffff" },
+					{ "time": 6, "color": "ffffff00" },
+					{ "time": 6.6667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 3 },
+					{ "time": 3.3333, "name": "anh sang" },
+					{ "time": 3.6667 },
+					{ "time": 4, "name": "anh sang" },
+					{ "time": 7 },
+					{ "time": 7.3333, "name": "anh sang" },
+					{ "time": 7.6667 },
+					{ "time": 8, "name": "anh sang" }
+				]
+			}
+		}
+	}
+}
+}

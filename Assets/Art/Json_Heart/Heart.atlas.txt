@@ -1,0 +1,16 @@
+Heart.png
+size:108,276
+filter:Linear,Linear
+pma:true
+broken-heart
+bounds:2,2,62,50
+rotate:90
+broken-heart1
+bounds:2,66,102,91
+rotate:90
+heart
+bounds:54,4,60,50
+rotate:90
+heart (1)
+bounds:2,170,103,91
+rotate:90

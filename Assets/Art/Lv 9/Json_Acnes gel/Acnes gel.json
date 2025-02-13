@@ -1,0 +1,100 @@
+{
+"skeleton": {
+	"hash": "THXSpVBJZ/s",
+	"spine": "4.2.32",
+	"x": -44.5,
+	"y": -110.66,
+	"width": 88,
+	"height": 231.29,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root" },
+	{ "name": "kem", "parent": "bone", "x": 0.27, "y": -89.95 },
+	{ "name": "nap", "parent": "bone", "x": 0.05, "y": -77.66 }
+],
+"slots": [
+	{ "name": "kem", "bone": "kem" },
+	{ "name": "lo", "bone": "bone", "attachment": "lo" },
+	{ "name": "nap", "bone": "nap", "attachment": "nap" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"kem": {
+				"kem": { "x": -0.17, "y": -12.03, "width": 38, "height": 39 }
+			},
+			"lo": {
+				"lo": {
+					"type": "mesh",
+					"uvs": [ 1, 0.54303, 0.92125, 0.93361, 1, 1, 0, 1, 0.08258, 0.93166, 0, 0.54498, 0, 0, 1, 0 ],
+					"triangles": [ 6, 7, 0, 5, 6, 0, 4, 5, 0, 1, 4, 0, 4, 1, 2, 3, 4, 2 ],
+					"vertices": [ 43.5, 0.62, 36.57, -85.7, 43.5, -100.37, -44.5, -100.37, -37.23, -85.27, -44.5, 0.18, -44.5, 120.63, 43.5, 120.63 ],
+					"hull": 8,
+					"edges": [ 4, 6, 12, 14, 10, 12, 0, 14, 10, 8, 0, 2, 2, 4, 8, 6 ],
+					"width": 88,
+					"height": 221
+				}
+			},
+			"nap": {
+				"nap": { "x": -0.43, "y": -16.5, "width": 58, "height": 33 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"kem": {
+				"attachment": [
+					{ "time": 0.5, "name": "kem" }
+				]
+			},
+			"nap": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"kem": {
+				"translate": [
+					{ "time": 0.5 },
+					{ "time": 1, "y": -6.54 }
+				],
+				"scale": [
+					{ "x": 0.272, "y": 0.272, "curve": "stepped" },
+					{ "time": 0.5, "x": 0.272, "y": 0.272 },
+					{ "time": 1 }
+				]
+			},
+			"nap": {
+				"translate": [
+					{},
+					{ "time": 0.5, "y": -30.61 }
+				]
+			}
+		},
+		"attachments": {
+			"default": {
+				"lo": {
+					"lo": {
+						"deform": [
+							{ "time": 0.5 },
+							{
+								"time": 1,
+								"vertices": [ -5.62503, -1.25002, 0, 0, 0, 0, 0, 0, 0, 0, 7.50003 ]
+							}
+						]
+					}
+				}
+			}
+		}
+	},
+	"idle": {}
+}
+}

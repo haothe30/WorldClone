@@ -1,0 +1,9 @@
+Voi nuoc.png
+size:1300,176
+filter:Linear,Linear
+pma:true
+nuoc
+bounds:1096,2,201,172
+voi
+bounds:2,51,123,1092
+rotate:90

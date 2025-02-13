@@ -1,0 +1,10 @@
+Mascara.png
+size:308,40
+filter:Linear,Linear
+pma:true
+mascara 1
+bounds:195,2,36,111
+rotate:90
+mascara 2
+bounds:2,3,35,191
+rotate:90

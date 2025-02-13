@@ -1,0 +1,63 @@
+{
+"skeleton": {
+	"hash": "EEcI4YdAUlo",
+	"spine": "4.2.32",
+	"x": -39.21,
+	"y": -122.68,
+	"width": 97.89,
+	"height": 276.38,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root" },
+	{ "name": "banchai 1", "parent": "bone", "rotation": 11.69, "x": 2.61, "y": -64.11 }
+],
+"slots": [
+	{ "name": "banchai 1", "bone": "banchai 1", "attachment": "banchai 1" },
+	{ "name": "Layer 1", "bone": "banchai 1", "attachment": "Layer 1" },
+	{ "name": "ban chai 2", "bone": "bone", "attachment": "ban chai 2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"banchai 1": {
+				"banchai 1": { "x": 3.02, "y": 75.38, "rotation": -11.69, "width": 59, "height": 258 }
+			},
+			"ban chai 2": {
+				"ban chai 2": { "x": -5.37, "y": 10.82, "width": 62, "height": 267 }
+			},
+			"Layer 1": {
+				"Layer 1": { "x": 57.2, "y": 163.46, "rotation": -90.48, "width": 84, "height": 51 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"banchai 1": {
+				"attachment": [
+					{}
+				]
+			},
+			"Layer 1": {
+				"attachment": [
+					{}
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"ban chai 2": {
+				"attachment": [
+					{}
+				]
+			}
+		}
+	}
+}
+}

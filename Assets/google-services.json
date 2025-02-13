@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "169157269070",
+    "project_id": "tidy-games-asmr-perfect",
+    "storage_bucket": "tidy-games-asmr-perfect.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169157269070:android:59a58b99b10c2ce8cf951f",
+        "android_client_info": {
+          "package_name": "com.gaia.tidy.asmr.perfect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmw_eo7q3dOUzkOP1KZrEjq1o8n3nNmko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

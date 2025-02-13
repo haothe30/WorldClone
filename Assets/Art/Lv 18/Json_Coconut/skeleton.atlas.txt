@@ -1,0 +1,10 @@
+skeleton.png
+size:228,124
+filter:Linear,Linear
+pma:true
+COCONUT OIL
+bounds:2,2,118,138
+rotate:90
+u
+bounds:142,29,91,81
+rotate:90

@@ -1,0 +1,12 @@
+Phan mat 2.png
+size:292,176
+filter:Linear,Linear
+pma:true
+co
+bounds:2,139,32,288
+rotate:90
+mau mat
+bounds:151,88,49,49
+phan mat
+bounds:2,2,135,147
+rotate:90

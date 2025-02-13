@@ -1,0 +1,49 @@
+{
+"skeleton": {
+	"hash": "TSCLaMEb5nI",
+	"spine": "4.2.32",
+	"x": -59,
+	"y": -134,
+	"width": 118,
+	"height": 268,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "mo", "bone": "root", "attachment": "mo" },
+	{ "name": "up", "bone": "root" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"mo": {
+				"mo": { "width": 118, "height": 268 }
+			},
+			"up": {
+				"up": { "width": 118, "height": 268 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"mo": {
+				"attachment": [
+					{}
+				]
+			},
+			"up": {
+				"attachment": [
+					{ "name": "up" }
+				]
+			}
+		}
+	},
+	"idle": {}
+}
+}

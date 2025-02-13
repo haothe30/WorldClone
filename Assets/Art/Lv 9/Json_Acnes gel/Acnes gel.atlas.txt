@@ -1,0 +1,11 @@
+Acnes gel.png
+size:288,92
+filter:Linear,Linear
+pma:true
+kem
+bounds:225,16,38,39
+lo
+bounds:2,2,88,221
+rotate:90
+nap
+bounds:225,57,58,33
