@@ -1,6 +1,0 @@
-Nuoc.png
-size:180,180
-filter:Linear,Linear
-pma:true
-1
-bounds:2,2,175,175

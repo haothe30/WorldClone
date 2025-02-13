@@ -1,6 +1,0 @@
-skeleton.png
-size:68,68
-filter:Linear,Linear
-pma:true
-star_1
-bounds:2,2,62,62

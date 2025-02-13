@@ -1,9 +1,0 @@
-skeleton.png
-size:264,128
-filter:Linear,Linear
-pma:true
-mo
-bounds:2,2,129,124
-up
-bounds:133,3,123,127
-rotate:90

@@ -1,9 +1,0 @@
-skeleton.png
-size:244,136
-filter:Linear,Linear
-pma:true
-Layer 1
-bounds:213,88,28,43
-Shampoo
-bounds:2,2,129,209
-rotate:90

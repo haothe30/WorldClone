@@ -1,9 +1,0 @@
-Khan.png
-size:608,412
-filter:Linear,Linear
-pma:true
-1
-bounds:455,62,348,151
-rotate:90
-2
-bounds:2,2,451,408
