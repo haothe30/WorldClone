@@ -12,177 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2235c4b894d42524d947b9609062db39, type: 3}
   m_Name: DataLevel
   m_EditorClassIdentifier: 
-  lstDataLevel:
-  - levelInfo:
-    - indexLevel: 0
-      indexPrefab: 0
-      maxTime: 180
-      totalStarToUnlock: 0
-    - indexLevel: 1
-      indexPrefab: 1
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 2
-      indexPrefab: 2
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 3
-      indexPrefab: 3
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 4
-      indexPrefab: 4
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 5
-      indexPrefab: 5
-      maxTime: 90
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 6
-      indexPrefab: 6
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 7
-      indexPrefab: 7
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 8
-      indexPrefab: 8
-      maxTime: 120
-      totalStarToUnlock: 20
-  - levelInfo:
-    - indexLevel: 9
-      indexPrefab: 9
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 10
-      indexPrefab: 10
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 11
-      indexPrefab: 11
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 12
-      indexPrefab: 12
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 13
-      indexPrefab: 13
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 14
-      indexPrefab: 14
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 15
-      indexPrefab: 15
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 16
-      indexPrefab: 16
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 17
-      indexPrefab: 17
-      maxTime: 139
-      totalStarToUnlock: 43
-  - levelInfo:
-    - indexLevel: 18
-      indexPrefab: 18
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 19
-      indexPrefab: 19
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 20
-      indexPrefab: 20
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 21
-      indexPrefab: 21
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 22
-      indexPrefab: 22
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 23
-      indexPrefab: 23
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 24
-      indexPrefab: 24
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 25
-      indexPrefab: 25
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 26
-      indexPrefab: 26
-      maxTime: 120
-      totalStarToUnlock: 65
-  - levelInfo:
-    - indexLevel: 27
-      indexPrefab: 27
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 28
-      indexPrefab: 28
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 29
-      indexPrefab: 29
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 30
-      indexPrefab: 30
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 31
-      indexPrefab: 31
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 32
-      indexPrefab: 32
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 33
-      indexPrefab: 33
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 34
-      indexPrefab: 34
-      maxTime: 120
-      totalStarToUnlock: 0
-  - levelInfo:
-    - indexLevel: 35
-      indexPrefab: 35
-      maxTime: 120
-      totalStarToUnlock: 88
-  - levelInfo:
-    - indexLevel: 36
-      indexPrefab: 36
-      maxTime: 120
-      totalStarToUnlock: 0
-    - indexLevel: 37
-      indexPrefab: 37
-      maxTime: 120
-      totalStarToUnlock: 0
+  levelInfo:
+  - indexLevel: 1
+    indexPrefab: 1
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 2
+    indexPrefab: 2
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 3
+    indexPrefab: 3
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 4
+    indexPrefab: 4
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 5
+    indexPrefab: 5
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 6
+    indexPrefab: 6
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 7
+    indexPrefab: 7
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 8
+    indexPrefab: 8
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 9
+    indexPrefab: 9
+    maxTime: 120
+    totalStarToUnlock: 3
+  - indexLevel: 10
+    indexPrefab: 10
+    maxTime: 120
+    totalStarToUnlock: 3

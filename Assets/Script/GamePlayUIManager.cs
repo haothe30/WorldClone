@@ -50,13 +50,6 @@ public class GamePlayUIManager : UIParent
             return;
         MusicManager.instance.SoundClickButton();
 
-        if (GamePlayManager.Instance.GetObjectDragScratchCanNext != null)
-        {
-            ObjectDragScratch objectDragScratchTemp = GamePlayManager.Instance.GetObjectDragScratchCanNext;
-            GamePlayManager.Instance.GetObjectDragScratchCanNext = null;
-            objectDragScratchTemp.DoneMe();
-
-        }    
         btnNextStep.SetActive(false);
         DataManager.instance.ShowInterAllGame("BtnNextStep");
     }    

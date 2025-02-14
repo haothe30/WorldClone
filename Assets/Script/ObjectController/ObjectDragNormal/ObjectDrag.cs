@@ -21,17 +21,7 @@ public class ObjectDrag : ObjectDragParent
             objectAnimation.SkipFunc();
         }
     }
-    [System.Serializable]
-    public class InfoObjectScratchMustActiveAfterDoneMe
-    {
-        public ObjectDragScratch objDragScratchMustActiveAfterDoneMe;
-        public ObjectTargetScratch objTargetScratchMustActiveAfterDoneMe;
 
-        public void MustActive()
-        {
-            objDragScratchMustActiveAfterDoneMe.MustActive(objTargetScratchMustActiveAfterDoneMe);
-        }
-    }
 
     [SerializeField] ObjectDragParent[] lstObjectDragLinked;
     [SerializeField] bool notRotate, animChangeSpAfterDone, needCorrectPos, RotateAfterDone, objectDropNotIncludeOtherObject;
@@ -43,7 +33,6 @@ public class ObjectDrag : ObjectDragParent
     [SerializeField] public InfoObjectAnimation[] infoObjectAnimationDoneMe;
     [SerializeField] GameObject parentAfterDone, objectScaleClick;
 
-    [SerializeField] InfoObjectScratchMustActiveAfterDoneMe[] infoObjectScratchActiveAfterDoneMe;
     ObjectDropNotIncludeOtherObject objectDropNotIncludeOtherObjectGroup;
 
     Vector2 scaleOriginal;
@@ -526,29 +515,15 @@ public class ObjectDrag : ObjectDragParent
                 GamePlayManager.Instance.GetLevelController().PushEventCheckDoneStep(GetOriginalIndex().ToString());
 
 
-                if (infoObjectScratchActiveAfterDoneMe.Length > 0)
-                {
-                    for (int i = 0; i < GetLstObjectActiveAfterDone().Length; i++)
-                    {
-                        GetLstObjectActiveAfterDone()[i].SetActive(true);
-                    }
 
-                    for (int i = 0; i < infoObjectScratchActiveAfterDoneMe.Length; i++)
-                    {
-                        infoObjectScratchActiveAfterDoneMe[i].MustActive();
-                    }
+                if (GetLstNextObjectActiveAfterDone.Count == 0)
+                {
+                    ActiveAllAfterDone(false, GamePlayManager.Instance.CheckWin);
                 }
                 else
                 {
-                    if (GetLstNextObjectActiveAfterDone.Count == 0)
-                    {
-                        ActiveAllAfterDone(false, GamePlayManager.Instance.CheckWin);
-                    }
-                    else
-                    {
-                        ActiveAllAfterDone(false, null);
-                        GamePlayManager.Instance.GetLevelController().ActiveNextObect();
-                    }
+                    ActiveAllAfterDone(false, null);
+                    GamePlayManager.Instance.GetLevelController().ActiveNextObect();
                 }
 
             }
@@ -569,31 +544,17 @@ public class ObjectDrag : ObjectDragParent
                 {
                     GamePlayManager.Instance.GetLevelController().PushEventCheckDoneStep(GetOriginalIndex().ToString());
 
-                    if (infoObjectScratchActiveAfterDoneMe.Length > 0)
-                    {
-                        for (int i = 0; i < GetLstObjectActiveAfterDone().Length; i++)
-                        {
-                            GetLstObjectActiveAfterDone()[i].SetActive(true);
-                        }
 
-                        for (int i = 0; i < infoObjectScratchActiveAfterDoneMe.Length; i++)
-                        {
-                            infoObjectScratchActiveAfterDoneMe[i].MustActive();
-                        }
+                    if (GetLstNextObjectActiveAfterDone.Count == 0)
+                    {
+                        ActiveAllAfterDone(false, GamePlayManager.Instance.CheckWin);
                     }
                     else
                     {
-                        if (GetLstNextObjectActiveAfterDone.Count == 0)
-                        {
-                            ActiveAllAfterDone(false, GamePlayManager.Instance.CheckWin);
-                        }
-                        else
-                        {
-                            ActiveAllAfterDone(false, null);
-                            GamePlayManager.Instance.GetLevelController().GetCurrentObjectDrag = this;
-                            GamePlayManager.Instance.GetLevelController().ActiveNextObect();
-                            //  Debug.LogError("================================= ???????????????????");
-                        }
+                        ActiveAllAfterDone(false, null);
+                        GamePlayManager.Instance.GetLevelController().GetCurrentObjectDrag = this;
+                        GamePlayManager.Instance.GetLevelController().ActiveNextObect();
+                        //  Debug.LogError("================================= ???????????????????");
                     }
                 }
             }

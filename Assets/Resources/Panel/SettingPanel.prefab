@@ -640,6 +640,7 @@ MonoBehaviour:
   animOfPopUp: {fileID: 0}
   nameForAnimPopUpOpen: PopUpOpen
   nameForAnimPopUpClose: PopUpClose
+  pointNativeAds: {fileID: 0}
   currentLanguageText: {fileID: 7050646532222274047}
   currentMusicHomeText: {fileID: 8023754064357156815}
   languageName:

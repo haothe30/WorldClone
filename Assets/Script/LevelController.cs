@@ -191,58 +191,58 @@ public class LevelController : MonoBehaviour
     }
     [SerializeField] float speedDropDecore = 0.5f, delayDropDecore = 0.1f;
     [SerializeField] float speedDropElement = 1f, delayDropElement = 0.01f;
-    public void DropRandomDecor(float _heightCam, Action ac)
-    {
-        int count = 0;
-        Vector3 HighPosition = Vector3.zero;
-        List<Vector3> oriDecorPos = new List<Vector3>();
-        if (startDropDecore)
-        {
-            for (int i = 0; i < lstObjectDisplayOnStart.Length; i++)
-            {
-                oriDecorPos.Add(lstObjectDisplayOnStart[i].transform.position);
-                HighPosition = new Vector3(lstObjectDisplayOnStart[i].transform.position.x, _heightCam + 2, lstObjectDisplayOnStart[i].transform.position.z);
-                lstObjectDisplayOnStart[i].transform.position = HighPosition;
-                lstObjectDisplayOnStart[i].transform.DOMove(oriDecorPos[i], speedDropDecore).SetDelay(delayDropDecore * i).OnComplete(() =>
-                {
-                    count++;
-                    if (count == lstObjectDisplayOnStart.Length)
-                    {
-                        DropRandomElement(_heightCam, ac);
-                        Debug.LogError("===================== done drop Decor");
-                    }
-                });
-            }
-        }
-        else
-        {
-            DropRandomElement(_heightCam, ac);
-        }
-    }
-    public void DropRandomElement(float _heightCam, Action ac)
-    {
-        int count = 0;
-        Vector2 HighPosition = Vector2.zero;
-        for (int i = 0; i < lstObjectDrag.Count; i++)
-        {
-            HighPosition = new Vector2(lstObjectDrag[i].transform.position.x, _heightCam + 2);
-            lstObjectDrag[i].transform.position = HighPosition;
-            lstObjectDrag[i].transform.gameObject.SetActive(true);
-            lstObjectDrag[i].transform.DOMove(lstObjectDrag[i].GetPosBegin, speedDropElement).SetDelay(i * delayDropElement).SetEase(Ease.InQuad).OnComplete(() =>
-            {
-                count++;
-                if (count == lstObjectDrag.Count)
-                {
-                    if (ac != null)
-                    {
-                        ac();
-                        ac = null;
-                    }
-                    Debug.LogError("===================== done drop Element");
-                }
-            });
-        }
-    }
+    //public void DropRandomDecor(float _heightCam, Action ac)
+    //{
+    //    int count = 0;
+    //    Vector3 HighPosition = Vector3.zero;
+    //    List<Vector3> oriDecorPos = new List<Vector3>();
+    //    if (startDropDecore)
+    //    {
+    //        for (int i = 0; i < lstObjectDisplayOnStart.Length; i++)
+    //        {
+    //            oriDecorPos.Add(lstObjectDisplayOnStart[i].transform.position);
+    //            HighPosition = new Vector3(lstObjectDisplayOnStart[i].transform.position.x, _heightCam + 2, lstObjectDisplayOnStart[i].transform.position.z);
+    //            lstObjectDisplayOnStart[i].transform.position = HighPosition;
+    //            lstObjectDisplayOnStart[i].transform.DOMove(oriDecorPos[i], speedDropDecore).SetDelay(delayDropDecore * i).OnComplete(() =>
+    //            {
+    //                count++;
+    //                if (count == lstObjectDisplayOnStart.Length)
+    //                {
+    //                    DropRandomElement(_heightCam, ac);
+    //                    Debug.LogError("===================== done drop Decor");
+    //                }
+    //            });
+    //        }
+    //    }
+    //    else
+    //    {
+    //        DropRandomElement(_heightCam, ac);
+    //    }
+    //}
+    //public void DropRandomElement(float _heightCam, Action ac)
+    //{
+    //    int count = 0;
+    //    Vector2 HighPosition = Vector2.zero;
+    //    for (int i = 0; i < lstObjectDrag.Count; i++)
+    //    {
+    //        HighPosition = new Vector2(lstObjectDrag[i].transform.position.x, _heightCam + 2);
+    //        lstObjectDrag[i].transform.position = HighPosition;
+    //        lstObjectDrag[i].transform.gameObject.SetActive(true);
+    //        lstObjectDrag[i].transform.DOMove(lstObjectDrag[i].GetPosBegin, speedDropElement).SetDelay(i * delayDropElement).SetEase(Ease.InQuad).OnComplete(() =>
+    //        {
+    //            count++;
+    //            if (count == lstObjectDrag.Count)
+    //            {
+    //                if (ac != null)
+    //                {
+    //                    ac();
+    //                    ac = null;
+    //                }
+    //                Debug.LogError("===================== done drop Element");
+    //            }
+    //        });
+    //    }
+    //}
     public void OnStart()
     {
         originalOrthosizeCam = Camera.main.orthographicSize;

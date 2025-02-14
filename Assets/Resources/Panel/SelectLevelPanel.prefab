@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5286527491294555762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -220,11 +220,11 @@ MonoBehaviour:
   animOfPopUp: {fileID: 0}
   nameForAnimPopUpOpen: PopUpOpen
   nameForAnimPopUpClose: PopUpClose
+  pointNativeAds: {fileID: 0}
   scroller: {fileID: 1225431902132666720}
   managerSlot2: {fileID: 7768244897468773668, guid: b52faf95f2d06a043a696e54f9196027, type: 3}
   sizeSlots: 240
-  starText: {fileID: 7731086871206843789}
-  ticketText: {fileID: 2262406521924488005}
+  numberOfCellsPerRow: 4
 --- !u!1 &5203458349196187944
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2633478255086159591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -336,10 +336,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2364220807389614761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.09087183}
-  m_AnchorMax: {x: 1, y: 0.8445641}
-  m_AnchoredPosition: {x: 0, y: -0.30187988}
-  m_SizeDelta: {x: 0, y: -0.36800003}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 306.147}
+  m_SizeDelta: {x: 0, y: 612.2839}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633942561395572569
 MonoBehaviour:

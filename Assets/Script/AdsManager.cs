@@ -386,10 +386,11 @@ public class AdsManager : MonoBehaviour
             _bannerView.Destroy();
         }
 
-        adaptiveSize =
-                AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+        //adaptiveSize =
+              //  AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(Screen.width / 2);
 
-        _bannerView = new BannerView(bannerAdapterId, adaptiveSize, AdPosition.Top);
+
+        _bannerView = new BannerView(bannerAdapterId, AdSize.Leaderboard, AdPosition.Top);
 
         // Register for ad events.
         _bannerView.OnBannerAdLoaded += OnBannerAdapterAdLoaded;
@@ -935,6 +936,11 @@ public class AdsManager : MonoBehaviour
                 EventManager.SUM_BANNER_ALL_GAME();
                 Debug.LogError("================= show banner collapsed");
             }
+        }
+        else
+        {
+            Debug.LogError("================= Can not show banner collapsed");
+
         }
         //#if !UNITY_EDITOR
         //        if (bannerOK)

@@ -19,7 +19,7 @@ public class CheckResolution : MonoBehaviour
 
     public void Resolution()
     {
-        checkResolution = ((float)Screen.width / Screen.height);
+        checkResolution = ((float)Screen.height / Screen.width); // man hinh ngang
         //Debug.LogError("==================== resolution:" + (float)Screen.width + ":" + Screen.height + ":" + checkResolution);
         if (checkResolution >= 2048f / 2732) // >= 0.7496... man hinh ipad 
         {

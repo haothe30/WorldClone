@@ -12,20 +12,20 @@ public class SelectLevelPanel : UIProperties, IEnhancedScrollerDelegate
     [SerializeField] EnhancedScroller scroller;
     [SerializeField] EnhancedScrollerCellView managerSlot2;
     [SerializeField] float sizeSlots;
-    int numberOfCellsPerRow = 1;
-    [SerializeField] Text starText,ticketText;
+    [SerializeField] int numberOfCellsPerRow = 1;
+    //[SerializeField] Text starText,ticketText;
     public override void OpenMe()
     {
         base.OpenMe();
         scroller.Delegate = this;
         LoadData();
-        starText.text = "" + DataManager.instance.TotalStar();
-        ticketText.text = "" + DataManager.instance.SaveData().totalTicket;
+        //starText.text = "" + DataManager.instance.TotalStar();
+        //ticketText.text = "" + DataManager.instance.SaveData().totalTicket;
     }
     private void LoadData()
     {
         _data = new SmallList<Data>();
-        for (var i = 0; i < DataManager.instance.GetDataLevel().lstDataLevel.Length; i++)
+        for (var i = 0; i < DataManager.instance.GetDataLevel().levelInfo.Length; i++)
         {
             _data.Add(new Data() { someText = i.ToString() });
         }

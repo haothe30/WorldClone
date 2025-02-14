@@ -229,7 +229,7 @@ public class DataManager : MonoBehaviour
 #else
         AdsManager.instance.InitAdsAfterGDPR();
 #endif
-
+        //SetData();
     }
     public void AddTicket(int number)
     {
@@ -616,6 +616,16 @@ public class DataManager : MonoBehaviour
                 removeAdsPanel.CloseMe();
         }
     }
+    public void ShowLevelUnlockPopUp(LevelInfo _levelInfo, SlotLevel _slotLevelUnit)
+    {
+        if (unlockLevelPopUp == null)
+        {
+            unlockLevelPopUp = Instantiate(Resources.Load<UnlockLevelPopUp>("Panel/UnlockLevelPopUp"));
+            AddPanelToList(unlockLevelPopUp.gameObject);
+        }
+        unlockLevelPopUp.SetInfoLevelNeedUnlock(_levelInfo, _slotLevelUnit);
+        unlockLevelPopUp.OpenMe();
+    }
     public void ShowRemoveAdsPanel()
     {
         if (removeAdsPanel == null)
@@ -751,16 +761,7 @@ public class DataManager : MonoBehaviour
         }
         timeOutPanel.OpenMe();
     }
-    public void ShowLevelUnlockPopUp(LevelInfo _levelInfo, SlotLevelUnit _slotLevelUnit)
-    {
-        if (unlockLevelPopUp == null)
-        {
-            unlockLevelPopUp = Instantiate(Resources.Load<UnlockLevelPopUp>("Panel/UnlockLevelPopUp"));
-            AddPanelToList(unlockLevelPopUp.gameObject);
-        }
-        unlockLevelPopUp.SetInfoLevelNeedUnlock(_levelInfo, _slotLevelUnit);
-        unlockLevelPopUp.OpenMe();
-    }
+  
     public void ShowHackPopUp()
     {
         if (hackPopUp == null)
@@ -803,9 +804,9 @@ public class DataManager : MonoBehaviour
         StartCoroutine(RequestAuthorizationIOS());
 #endif
 
-        loadingPanel.CreateBegin();
+        // loadingPanel.CreateBegin();
 
-
+        SetData();
         Debug.LogError("============== json:" + JsonMapper.ToJson(dataLevel));
     }
     public void SetCurrentLevel(int indexLevel)
@@ -844,7 +845,7 @@ public class DataManager : MonoBehaviour
 
     void CalculateData()
     {
-        if (dataLevelFromRemoteConfig == null || dataLevelFromRemoteConfig.lstDataLevel.Length == 0)
+        if (dataLevelFromRemoteConfig == null || dataLevelFromRemoteConfig.levelInfo.Length == 0)
         {
             dataLevelTemp = dataLevel;
             Debug.LogError("============================== Data bị null nên lấy data mặc định");
@@ -856,17 +857,14 @@ public class DataManager : MonoBehaviour
         }
 
         int index = 0;
-        for (int i = 0; i < dataLevelTemp.lstDataLevel.Length; i++)
+        for (int i = 0; i < dataLevelTemp.levelInfo.Length; i++)
         {
-            for (int j = 0; j < dataLevelTemp.lstDataLevel[i].levelInfo.Length; j++)
+            if (dataLevelTemp.levelInfo[i].indexPrefab >= 0)
             {
-                if (dataLevelTemp.lstDataLevel[i].levelInfo[j].indexPrefab >= 0)
-                {
-                    LevelInfo _levelInfo = dataLevelTemp.lstDataLevel[i].levelInfo[j];
-                    _levelInfo.indexLevel = index;
-                    index++;
-                    lstLevelInfo.Add(_levelInfo);
-                }
+                LevelInfo _levelInfo = dataLevelTemp.levelInfo[i];
+                _levelInfo.indexLevel = index;
+                index++;
+                lstLevelInfo.Add(_levelInfo);
             }
         }
 

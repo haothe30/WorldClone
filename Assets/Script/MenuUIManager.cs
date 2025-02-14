@@ -26,7 +26,7 @@ public class MenuUIManager : UIParent
         GetDataManager().ShowSelectLevelPanel();
 
 
-        DisplayTab();
+       // DisplayTab();
 
 
         MusicManager.instance.PlaySoundBGHome(true, GetDataManager().SaveData().currentMusicHome);
@@ -62,7 +62,7 @@ public class MenuUIManager : UIParent
         {
             GetDataManager().ShowSettingPanel();
         }
-        DisplayTab();
+      //  DisplayTab();
 
         DataManager.instance.ShowInterAllGame("ChangeTab");
     }

@@ -9,26 +9,29 @@ public class UnlockLevelPopUp : UIProperties
     [SerializeField] GameObject specialBouder, normalBouder;
     [SerializeField] Text starNeedUnlockText, unlockPreviousLevelText, levelTextNormal, levelTextSpecial;
     LevelInfo levelInfo;
-    SlotLevelUnit slotLevelUnit;
     [SerializeField] Image iconNormal, iconSpecial;
-    public void SetInfoLevelNeedUnlock(LevelInfo _levelInfo, SlotLevelUnit _slotLevelUnit)
+    SlotLevel slotLevel;
+    public void SetInfoLevelNeedUnlock(LevelInfo _levelInfo, SlotLevel _slotLevel)
     {
         levelInfo = _levelInfo;
-        slotLevelUnit = _slotLevelUnit;
+        slotLevel = _slotLevel;
         specialBouder.SetActive(false);
         normalBouder.SetActive(false);
-        if (levelInfo.totalStarToUnlock > 0)
-        {
-            starNeedUnlockText.text = "Star to unlock: " + levelInfo.totalStarToUnlock;
-            levelTextSpecial.text = "Level " + (levelInfo.indexLevel + 1);
-            iconSpecial.sprite = slotLevelUnit.GetSpriteIcon();
-            specialBouder.SetActive(true);
-        }
-        else
+
+        // special level
+        
+        //if (levelInfo.totalStarToUnlock > 0)
+        //{
+        //    starNeedUnlockText.text = "Star to unlock: " + levelInfo.totalStarToUnlock;
+        //    levelTextSpecial.text = "Level " + (levelInfo.indexLevel + 1);
+        //    iconSpecial.sprite = slotLevel.GetSpriteIcon();
+        //    specialBouder.SetActive(true);
+        //}
+        //else
         {
             unlockPreviousLevelText.text = "Need finish Lv " + levelInfo.indexLevel;
             levelTextNormal.text = "Level " + (levelInfo.indexLevel + 1);
-            iconNormal.sprite = slotLevelUnit.GetSpriteIcon();
+            iconNormal.sprite = slotLevel.GetSpriteIcon();
             normalBouder.SetActive(true);
         }
     }
@@ -42,14 +45,15 @@ public class UnlockLevelPopUp : UIProperties
     void Reward()
     {
         DataManager.instance.SaveData().lstSaveLevel[levelInfo.indexLevel].stage = 1;
-        slotLevelUnit.DisplayUnlock();
+        slotLevel.DisplayUnlock();
         BeforeClose();
+
     }
     public override void CloseMe()
     {
         base.CloseMe();
 
         if (DataManager.instance.SaveData().lstSaveLevel[levelInfo.indexLevel].stage > 0)
-            slotLevelUnit.AutoPlay();
+            slotLevel.AutoPlay();
     }
 }

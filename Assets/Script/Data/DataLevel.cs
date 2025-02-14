@@ -5,12 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataLevel", menuName = "DataLevel")]
 public class DataLevel : ScriptableObject
 {
-    public LstDataLevel[] lstDataLevel;
-    [System.Serializable]
-    public class LstDataLevel
-    {
-        public LevelInfo[] levelInfo;
-    }
+    public LevelInfo[] levelInfo;
+
     [System.Serializable]
     public class LevelInfo
     {

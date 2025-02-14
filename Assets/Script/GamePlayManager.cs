@@ -11,6 +11,7 @@ public class GamePlayManager : MonoBehaviour
     public static GamePlayManager Instance;
     [SerializeField] LayerMask lm;
     [SerializeField] float speedDragObj = 5f;
+    [SerializeField] GameObject objectGroupPos;
     DataManager dataController;
     bool win;
     Sprite endSprite;
@@ -21,17 +22,12 @@ public class GamePlayManager : MonoBehaviour
     int maxStarCanTake = 3;
     float widthCam, heightCam;
 
-    [SerializeField] ObjectDragScratch objectDragScratchCanNext;
-    public ObjectDragScratch GetObjectDragScratchCanNext
-    {
-        get { return objectDragScratchCanNext; }
-        set { objectDragScratchCanNext = value; }
-    }
+
 
     public float GetWidthCam()
     {
         return widthCam;
-    } 
+    }
     public float GeHeightCam()
     {
         return heightCam;
@@ -93,7 +89,7 @@ public class GamePlayManager : MonoBehaviour
         }
     }
     bool vip;
- 
+
     public void OnStart()
     {
 
@@ -120,19 +116,23 @@ public class GamePlayManager : MonoBehaviour
             widthCam = levelController.GetCameraDrag().XMax();
         }
 
-        if (!levelController.GetStartDropElement())
-        {
-            ChangeStageToPlay();
-        }
-        else
-        {
-            levelController.DropRandomDecor(heightCam, ChangeStageToPlay);
-        }
+        //if (!levelController.GetStartDropElement())
+        //{
+        ChangeStageToPlay();
+        //}
+        //else
+        //{
+        //    levelController.DropRandomDecor(heightCam, ChangeStageToPlay);
+        //}
+
+
+
         AdsManager.instance.ShowBannerAds();
         MusicManager.instance.PlaySoundBGGP(true, MusicManager.instance.RandomBGGP());
     }
     void ChangeStageToPlay()
     {
+        Debug.LogError("======================== play nè");
         DataParamManager.state = DataParamManager.STATEGAMEPLAY.PLAY;
         if (!vip)
         {
@@ -150,6 +150,8 @@ public class GamePlayManager : MonoBehaviour
             return;
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.LogError("======================== Chọn nè");
+
             DownFunc();
 
         }
@@ -296,7 +298,7 @@ public class GamePlayManager : MonoBehaviour
     void LoadLevel()
     {
         DataParamManager.state = DataParamManager.STATEGAMEPLAY.BEGIN;
-        levelController = Instantiate(Resources.Load<LevelController>("Level/Level " + (dataController.GetCurrentLevel().indexPrefab + 1)));
+        levelController = Instantiate(Resources.Load<LevelController>("Level/Level " + (dataController.GetCurrentLevel().indexPrefab)));
         levelController.OnAwake();
         maxTime = (float)dataController.GetCurrentLevel().maxTime;
         GamePlayUIManager.Instance.GetTimeText().text = DataParamManager.ConvertTime((double)maxTime, 0);
@@ -388,7 +390,7 @@ public class GamePlayManager : MonoBehaviour
                 else
                 {
                     StartCoroutine(CallDelayDisplayAnimEndLevel());
-                }    
+                }
             }
 
         }
@@ -401,7 +403,7 @@ public class GamePlayManager : MonoBehaviour
     {
         yield return DataParamManager.GETTIME1S();
         levelController.GetAnimEndLevel().OpenMe(DisplayCorrecntObjEndLevel);
-    }    
+    }
     void DisplayCorrecntObjEndLevel()
     {
         if (levelController.GetCorrectObj() != null)
