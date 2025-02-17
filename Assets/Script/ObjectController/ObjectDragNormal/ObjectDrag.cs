@@ -41,9 +41,7 @@ public class ObjectDrag : ObjectDragParent
 
     [SerializeField] LayerMask objectNotIncludeLM;
 
-
-    [SerializeField] RotateObjectFunction donePartObject;
-
+    [SerializeField] Animator objectAnimator;
     public override void ActiveMe()
     {
 
@@ -94,6 +92,7 @@ public class ObjectDrag : ObjectDragParent
         {
             GetSpRender().transform.localScale = Vector2.one;
         }
+        objectAnimator.Play("ObjectFloat");
         originalLayerUp = GetOrderLayerUp;
         scaleOriginal = transform.localScale;
     }
@@ -456,11 +455,6 @@ public class ObjectDrag : ObjectDragParent
             if (_objectTarget.gameObject == GetLstObjectTarget()[0].gameObject)
             {
                 GetIsDone = true;
-                if (donePartObject != null)
-                {
-                    GetMyCollider2D().enabled = false;
-                    donePartObject.CheckRotateDoneObject();
-                }
             }
         }
         else

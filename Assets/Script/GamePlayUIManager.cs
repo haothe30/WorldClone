@@ -11,12 +11,9 @@ public class GamePlayUIManager : UIParent
     public static GamePlayUIManager Instance;
     [SerializeField] Text timeText;
     [SerializeField] GameObject allUI;
-    [SerializeField] GameObject  iconVideoHint,btnNextStep;
+    [SerializeField] GameObject  iconVideoHint, boxButton;
     [SerializeField] Animator btnAddTime;
-    public GameObject GetBtnNextStep()
-    {
-        return btnNextStep;
-    }    
+
     public GameObject GetBtnAddTime()
     {
         return btnAddTime.gameObject;
@@ -50,7 +47,6 @@ public class GamePlayUIManager : UIParent
             return;
         MusicManager.instance.SoundClickButton();
 
-        btnNextStep.SetActive(false);
         DataManager.instance.ShowInterAllGame("BtnNextStep");
     }    
     public void BtnSkip()

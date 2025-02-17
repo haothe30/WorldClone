@@ -94,7 +94,6 @@ public class GamePlayManager : MonoBehaviour
     {
 
         vip = dataController.SaveData().vip;
-        GamePlayUIManager.Instance.GetBtnNextStep().gameObject.SetActive(false);
         if (!vip)
         {
             GamePlayUIManager.Instance.GetBtnAddTime().SetActive(true);

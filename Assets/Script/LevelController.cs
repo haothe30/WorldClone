@@ -370,7 +370,6 @@ public class LevelController : MonoBehaviour
     }
     public void ActiveNextObect()
     {
-        GamePlayUIManager.Instance.GetBtnNextStep().SetActive(false);
         //  Debug.LogError("================ 1:" + currentObjectDrag.gameObject.name);
         if (currentObjectDrag.GetLstNextObjectActiveAfterDone.Count > 0)
         {
