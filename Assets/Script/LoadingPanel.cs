@@ -45,9 +45,14 @@ public class LoadingPanel : MonoBehaviour
         scale = new Vector3((worldScreenWidth / width) * 1f, (worldScreenHeight / height) * 1f, 1);
         //BGLogoSP.transform.localScale = BGSP.transform.localScale = scale;
 
-
-
-        nameNextScene = "Menu";
+        if (DataManager.instance.SaveData().session == 1)
+        {
+            nameNextScene = "Play";
+        }
+        else
+        {
+            nameNextScene = "Menu";
+        }
         //  Debug.LogError("=============== create :" + nameNextScene);
         currentLoadingOperation = SceneManager.LoadSceneAsync(nameNextScene);
         currentLoadingOperation.allowSceneActivation = false;
