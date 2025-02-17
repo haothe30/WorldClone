@@ -309,7 +309,7 @@ public class GamePlayManager : MonoBehaviour
         maxTime += number;
         GamePlayUIManager.Instance.SetAnimForBtnAddTime(false);
         GamePlayUIManager.Instance.GetTimeText().text = DataParamManager.ConvertTime((double)maxTime, 0);
-        DataManager.instance.ShowPopUpMess(Vector3.one, GamePlayUIManager.Instance.GetBtnAddTime().transform.position, "+60s");
+        DataManager.instance.ShowPopUpMess(Vector3.one, GamePlayUIManager.Instance.GetTimeText().transform.position, "+60s");
         EventManager.BOOSTERADDTIME();
     }
     public void CheckWin()
@@ -326,17 +326,20 @@ public class GamePlayManager : MonoBehaviour
 
         if (doneAll)
         {
-            DataManager.instance.CheckDoneLevel(maxStarCanTake);
+            win = true;
             ActiveCountTime(false);
             DataParamManager.state = DataParamManager.STATEGAMEPLAY.RESULT;
-            GamePlayUIManager.Instance.DisableAllUI();
-            win = true;
+            DataManager.instance.CheckDoneLevel(maxStarCanTake);
 
-            levelController.DoneAll(ShowEndPanel);
-
+            StartCoroutine(Win());
         }
     }
-
+    IEnumerator Win()
+    {
+        yield return DataParamManager.GETTIME1S();
+        GamePlayUIManager.Instance.DisableAllUI();
+        levelController.DoneAll(ShowEndPanel);
+    }
     public void CheckLose()
     {
         ActiveCountTime(false);

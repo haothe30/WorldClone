@@ -19,7 +19,6 @@ public class UIParent : MonoBehaviour
     Color colorAn = Color.white;
 
 
-
     public DataManager GetDataManager()
     {
         return dataController;

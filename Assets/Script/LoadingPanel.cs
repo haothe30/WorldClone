@@ -48,6 +48,7 @@ public class LoadingPanel : MonoBehaviour
         if (DataManager.instance.SaveData().session == 1)
         {
             nameNextScene = "Play";
+            DataParamManager.isTuroring = true;
         }
         else
         {

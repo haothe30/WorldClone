@@ -1,4 +1,5 @@
 ﻿
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +10,11 @@ using UnityEngine.UI;
 public class GamePlayUIManager : UIParent
 {
     public static GamePlayUIManager Instance;
-    [SerializeField] Text timeText;
+    [SerializeField] Text timeText, levelText;
     [SerializeField] GameObject allUI;
-    [SerializeField] GameObject  iconVideoHint, boxButton;
+    [SerializeField] GameObject  iconVideoHint, boxButton, doneDecorIcon;
     [SerializeField] Animator btnAddTime;
-
+    [SerializeField] Image fillIMG;
     public GameObject GetBtnAddTime()
     {
         return btnAddTime.gameObject;
@@ -36,6 +37,11 @@ public class GamePlayUIManager : UIParent
     private void Awake()
     {
         Instance = this;
+    }
+    public override void Start()
+    {
+        base.Start();
+        levelText.text = "Level " + DataManager.instance.GetCurrentLevel().indexPrefab;
     }
     public void DisableAllUI()
     {
@@ -80,6 +86,21 @@ public class GamePlayUIManager : UIParent
         {
             RewardHint();
         }
+    }
+    float countTemp;
+    int currentDecor;
+    public void CaculateProcessnig()
+    {
+        currentDecor++;
+        DOTween.To(() => countTemp, x => countTemp = x, currentDecor, 0.5f).OnUpdate(() =>
+        {
+            fillIMG.fillAmount = countTemp / GamePlayManager.Instance.GetLevelController().GetLstObjectDrag().Count;
+            if (fillIMG.fillAmount >= 1)
+            {
+                if(!doneDecorIcon.activeSelf)
+                doneDecorIcon.SetActive(true);
+            }
+        });
     }
     void RewardHint()
     {

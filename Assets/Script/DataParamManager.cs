@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DataParamManager
 {
-    public static bool ResumeFromAds = false, ResumeFromOtherAction = false, playingAnim = false, dragging, activeCountPlay;
+    public static bool ResumeFromAds = false, ResumeFromOtherAction = false, playingAnim = false, dragging, activeCountPlay, isTuroring = false;
     public static int indexPackIAP;
     public static float timeDelayShowAds = 60, timeCollapsedBannerFL = 15f, timeDelayLoadNative = 15f;
     public static string packBuyIAP, idNativeAds;

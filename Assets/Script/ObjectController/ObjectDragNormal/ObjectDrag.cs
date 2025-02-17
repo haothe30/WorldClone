@@ -473,6 +473,8 @@ public class ObjectDrag : ObjectDragParent
     {
         objectAnimator.Play("ObjectIdle");
 
+        GamePlayUIManager.Instance.CaculateProcessnig();
+
         if (needCorrectPos)
         {
             GetMyCollider2D().enabled = true;
