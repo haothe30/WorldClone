@@ -23,6 +23,10 @@ public class LoadingPanel : MonoBehaviour
         DontDestroyOnLoad(this);
     }
     //[SerializeField] Sprite[] bgLogospLst, chanchospLst, logoLst;
+    public GameObject GetMaskObject()
+    {
+        return Mask;
+    }
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Loading")

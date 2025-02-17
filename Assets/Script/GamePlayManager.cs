@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -23,7 +25,10 @@ public class GamePlayManager : MonoBehaviour
     float widthCam, heightCam;
 
 
-
+    public Transform GetObjectGroupTras()
+    {
+        return objectGroupPos.transform;
+    }
     public float GetWidthCam()
     {
         return widthCam;
@@ -124,8 +129,6 @@ public class GamePlayManager : MonoBehaviour
         //    levelController.DropRandomDecor(heightCam, ChangeStageToPlay);
         //}
 
-
-
         AdsManager.instance.ShowBannerAds();
         MusicManager.instance.PlaySoundBGGP(true, MusicManager.instance.RandomBGGP());
     }
@@ -145,14 +148,11 @@ public class GamePlayManager : MonoBehaviour
     private void Update()
     {
 
-        if (CanNotAction())
+        if (CanNotAction() || LoadingPanel.loading.GetMaskObject().activeSelf)
             return;
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.LogError("======================== Chọn nè");
-
             DownFunc();
-
         }
         else if (Input.GetMouseButton(0))
         {
@@ -464,8 +464,24 @@ public class GamePlayManager : MonoBehaviour
         yield return DataParamManager.GETTIME1S();
         DataManager.instance.ShowEndPanel();
     }
-
-
+    int countDecor;
+    public void ActiveDecorElement(Button thisButton)
+    {
+        if (countDecor >= 0)
+        {
+            levelController.GetLstObjectDrag()[countDecor].PlayAnimStartGame();
+            if (countDecor >= levelController.GetLstObjectDrag().Count - 1)
+            {
+                thisButton.enabled = false;
+                countDecor = -1;
+            }
+            else
+            {
+                countDecor++;
+                levelController.GetLstObjectDrag()[countDecor].gameObject.SetActive(transform);
+            }
+        }
+    }
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)

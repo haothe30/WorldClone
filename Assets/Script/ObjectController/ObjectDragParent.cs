@@ -253,23 +253,11 @@ public class ObjectDragParent : MonoBehaviour
             }
         }
     }
-    public virtual void DisplayAfterPlayAnimBeginLevel()
-    {
-
-    }
-    public virtual void UpFunc()
-    {
-
-    }
-    public virtual void DragFunc()
-    {
-
-    }
-
-    public virtual void GetIndexOf()
-    {
-
-    }
+    public virtual void PlayAnimStartGame() { }
+    public virtual void DisplayAfterPlayAnimBeginLevel() { }
+    public virtual void UpFunc() { }
+    public virtual void DragFunc() { }
+    public virtual void GetIndexOf() { }
     public void PlayAnim(string nameAnim, bool loop)
     {
         if (sa != null)

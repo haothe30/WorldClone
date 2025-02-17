@@ -42,6 +42,24 @@ public class ObjectDrag : ObjectDragParent
     [SerializeField] LayerMask objectNotIncludeLM;
 
     [SerializeField] Animator objectAnimator;
+
+    public override void OnAwake()
+    {
+        base.OnAwake();
+        OriginPosition = transform.position;
+        transform.position = GamePlayManager.Instance.GetObjectGroupTras().position;
+        transform.localScale = Vector3.zero;
+    }
+    Vector3 OriginPosition;
+    public override void PlayAnimStartGame()
+    {
+        transform.DOScale(0.9f, 1);
+        transform.DOMove(OriginPosition, 1f).OnComplete(() => 
+        {
+            objectAnimator.Play("ObjectFloat");
+
+        });
+    }
     public override void ActiveMe()
     {
 
@@ -92,7 +110,8 @@ public class ObjectDrag : ObjectDragParent
         {
             GetSpRender().transform.localScale = Vector2.one;
         }
-        objectAnimator.Play("ObjectFloat");
+
+
         originalLayerUp = GetOrderLayerUp;
         scaleOriginal = transform.localScale;
     }
@@ -122,6 +141,8 @@ public class ObjectDrag : ObjectDragParent
                 }
 
             }
+
+            objectAnimator.Play("ObjectIdle");
 
             if (scaleSp == 1 || scaleSp == 3)
             {
@@ -230,6 +251,8 @@ public class ObjectDrag : ObjectDragParent
     void UpButNotHit()
     {
         MusicManager.instance.PlaySoundLevelOneShot(true, GetIndexSoundUp());
+
+        objectAnimator.Play("ObjectFloat");
 
         GetOrderLayerUp = originalLayerUp;
 
@@ -448,6 +471,7 @@ public class ObjectDrag : ObjectDragParent
     [SerializeField] bool notDisableBoxOfTarget;
     public override void DoneMe()
     {
+        objectAnimator.Play("ObjectIdle");
 
         if (needCorrectPos)
         {
@@ -495,6 +519,7 @@ public class ObjectDrag : ObjectDragParent
                 gameObject.SetActive(false);
             });
         }
+        transform.DOMoveZ(_objectTargetPos.z, 0.01f);
         transform.DOMove(_objectTargetPos, speedMoveToTarget).SetEase(Ease.Linear).OnComplete(() =>
         {
             _objectTarget.ActiveLstObjectAfterDoneMe();

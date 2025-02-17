@@ -189,8 +189,9 @@ public class LevelController : MonoBehaviour
         }
 
     }
-    [SerializeField] float speedDropDecore = 0.5f, delayDropDecore = 0.1f;
-    [SerializeField] float speedDropElement = 1f, delayDropElement = 0.01f;
+    
+    //[SerializeField] float speedDropDecore = 0.5f, delayDropDecore = 0.1f;
+    //[SerializeField] float speedDropElement = 1f, delayDropElement = 0.01f;
     //public void DropRandomDecor(float _heightCam, Action ac)
     //{
     //    int count = 0;

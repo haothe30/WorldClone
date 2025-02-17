@@ -37,7 +37,7 @@ public class MenuUIManager : UIParent
 
     public void BtnChangeTab(int index)
     {
-        if (GetDataManager().CanNotAction())
+        if (GetDataManager().CanNotAction() || LoadingPanel.loading.GetMaskObject().activeSelf)
             return;
 
         if (currentTab == index)

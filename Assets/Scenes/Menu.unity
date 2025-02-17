@@ -817,14 +817,8 @@ MonoBehaviour:
   iconBtnImg:
   - {fileID: 1873066890}
   - {fileID: 1251113335}
-  bouderSp:
-  - {fileID: 21300000, guid: c3c32dfc5c548e242acff34c86c0fc0a, type: 3}
-  - {fileID: 21300000, guid: 6ef7ecdae5d52ff408b49f0a2a527a22, type: 3}
-  iconSpOn:
-  - {fileID: 21300000, guid: 26e53fd9c6fa9d2418c9aa71f5bf5d07, type: 3}
-  - {fileID: 21300000, guid: 8202b80205abd924f9a75f9e9ed456ce, type: 3}
-  - {fileID: 21300000, guid: 318bb6308ccdfb74ca6f8c4f5ba6815c, type: 3}
-  - {fileID: 21300000, guid: 59966f4afd632a04d824209240afe3cc, type: 3}
+  bouderSp: []
+  iconSpOn: []
   iconSpOff:
   - {fileID: 21300000, guid: 0790b409cc1a6f4458f4b522c8c477f6, type: 3}
   - {fileID: 21300000, guid: b66f7cc6950f60e41a6ed61a70f9194d, type: 3}

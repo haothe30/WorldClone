@@ -35,6 +35,7 @@ public class SlotLevel : MonoBehaviour
     }
     public void BtnClick()
     {
+        if (LoadingPanel.loading.GetMaskObject().activeSelf) return;
         if (lockObj.activeSelf)
         {
             DataManager.instance.ShowLevelUnlockPopUp(DataManager.instance.GetListLevelInfo()[index], this);
