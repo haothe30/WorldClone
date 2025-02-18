@@ -62,8 +62,8 @@ public class MenuUIManager : UIParent
         {
             GetDataManager().ShowSettingPanel();
         }
-      //  DisplayTab();
-
+        //  DisplayTab();
+        currentTab = -1;
         DataManager.instance.ShowInterAllGame("ChangeTab");
     }
     void DisplayTab()

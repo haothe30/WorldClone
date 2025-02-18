@@ -175,7 +175,7 @@ public class ObjectDragParent : MonoBehaviour
     }
     public virtual void SkipFunc()
     {
-
+       
     }
     public virtual void ActiveMe()
     {

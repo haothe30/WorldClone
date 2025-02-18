@@ -79,6 +79,10 @@ public class DataManager : MonoBehaviour
     DataLevel dataLevelTemp;
     DataLevel dataLevelFromRemoteConfig;
 
+    public SelectLevelPanel GetSelectLevelPanel()
+    {
+        return selectLevelPanel;
+    }
     public bool CheckNotInterNet()
     {
         return Application.internetReachability == NetworkReachability.NotReachable;

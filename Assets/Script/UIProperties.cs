@@ -88,6 +88,7 @@ public class UIProperties : MonoBehaviour
     public virtual void CloseMe()
     {
         gameObject.SetActive(false);
+       
     }
     public void BeforeClose()
     {

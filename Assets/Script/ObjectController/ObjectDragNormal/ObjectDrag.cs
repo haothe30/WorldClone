@@ -608,6 +608,9 @@ public class ObjectDrag : ObjectDragParent
     {
         base.SkipFunc();
         base.DoneMe();
+
+        objectAnimator.Play("ObjectIdle");
+
         ActiveAllAfterDone(true, null);
         GetOrderLayerUp = GetLstObjectTarget()[0].GetComponent<ObjectTarget>().GetOrderLayerAfterDone();
         ChangeSortingLayer(GetOrderLayerUp);
@@ -633,7 +636,7 @@ public class ObjectDrag : ObjectDragParent
         }
         gameObject.SetActive(true);
         transform.DOKill();
-        transform.localScale = scaleOriginal;
+        transform.localScale = Vector3.one;
         if (parentAfterDone != null)
             transform.parent = parentAfterDone.transform;
         if (scaleSp == 1)

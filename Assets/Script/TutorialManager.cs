@@ -28,6 +28,7 @@ public class TutorialManager : MonoBehaviour
             }
             else if (tutCount == 1)
             {
+                objectTuts[0].SetActive(true);
                 MovingHand(false, GamePlayManager.Instance.GetLevelController().GetLstObjectDrag()[0].transform.position, objectTuts[0].transform.position);
             }
             else if (tutCount == 2)
