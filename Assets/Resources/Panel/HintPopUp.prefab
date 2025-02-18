@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myUIProperties: {fileID: 4440960734143515443}
+  objectDisplay: {fileID: 0}
+  indexSound: -1
 --- !u!114 &4440960734143515443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
   animOfPopUp: {fileID: 4253845277550382874}
   nameForAnimPopUpOpen: PopUpOpen
   nameForAnimPopUpClose: PopUpClose
+  pointNativeAds: {fileID: 0}
   icon: {fileID: 4625384996090138801}
 --- !u!1 &5033560208823024323
 GameObject:
@@ -168,8 +171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: 550, y: 650}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 812, y: 426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8008946831870998640
 CanvasRenderer:
@@ -199,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f27f888e2c30aed4cb2050f84919d9d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0f327f124999034d87f67c2c0b37e75, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -377,7 +380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 609, y: 836}
+  m_SizeDelta: {x: 826, y: 440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1427382749548497979
 CanvasRenderer:
@@ -407,7 +410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5b48c1af6e06f648bdf3cef9ee5bbc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1f408872b65d0a4b9b278f161347829, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
