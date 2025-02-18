@@ -13,6 +13,10 @@ public class TutorialManager : MonoBehaviour
     {
         tutorial = this;
     }
+    public int GetTutCount()
+    {
+        return tutCount;
+    }
     int tutCount;
     public void ActiveTut()
     {

@@ -2663,6 +2663,7 @@ MonoBehaviour:
     m_Bits: 640
   speedDragObj: 20
   objectGroupPos: {fileID: 350494224}
+  boxSG: {fileID: 1115541743}
 --- !u!4 &2069734888
 Transform:
   m_ObjectHideFlags: 0

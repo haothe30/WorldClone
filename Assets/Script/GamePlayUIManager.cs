@@ -49,7 +49,7 @@ public class GamePlayUIManager : UIParent
     }
     public void BtnNextStep()
     {
-        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY)
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
             return;
         MusicManager.instance.SoundClickButton();
 
@@ -57,7 +57,7 @@ public class GamePlayUIManager : UIParent
     }    
     public void BtnSkip()
     {
-        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY)
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
             return;
         MusicManager.instance.SoundClickButton();
         GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
@@ -67,7 +67,7 @@ public class GamePlayUIManager : UIParent
     }
     public void BtnHint()
     {
-        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY)
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
             return;
         MusicManager.instance.SoundClickButton();
         if (iconVideoHint.activeSelf)
@@ -105,11 +105,11 @@ public class GamePlayUIManager : UIParent
     void RewardHint()
     {
         GamePlayManager.Instance.HintFunc();
-        iconVideoHint.SetActive(false);
+        //iconVideoHint.SetActive(false);
     }
     public void BtnPause()
     {
-        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY)
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
             return;
         MusicManager.instance.SoundClickButton();
         GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
@@ -118,7 +118,7 @@ public class GamePlayUIManager : UIParent
     }
     public void BtnAddTime()
     {
-        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY)
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
             return;
         MusicManager.instance.SoundClickButton();
 

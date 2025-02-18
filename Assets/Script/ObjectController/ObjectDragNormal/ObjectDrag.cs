@@ -22,9 +22,8 @@ public class ObjectDrag : ObjectDragParent
         }
     }
 
-
     [SerializeField] ObjectDragParent[] lstObjectDragLinked;
-    [SerializeField] bool notRotate, animChangeSpAfterDone, needCorrectPos, RotateAfterDone, objectDropNotIncludeOtherObject;
+    [SerializeField] bool notRotate, animChangeSpAfterDone, needCorrectPos, RotateAfterDone, objectDropNotIncludeOtherObject, playVFXAfterDone;
     [SerializeField] Sprite spAfterDone;
     [SerializeField] int scaleSp;
     [SerializeField] Rigidbody2D rid2D;
@@ -54,7 +53,7 @@ public class ObjectDrag : ObjectDragParent
     public override void PlayAnimStartGame()
     {
         transform.DOScale(1f, 1);
-        transform.DOMove(OriginPosition, 1f).OnComplete(() => 
+        transform.DOMove(OriginPosition, 1f).OnComplete(() =>
         {
             objectAnimator.Play("ObjectFloat");
             if (DataParamManager.isTuroring)
@@ -537,6 +536,8 @@ public class ObjectDrag : ObjectDragParent
                 GetLstObjectDisableAfterDone()[i].SetActive(false);
             }
 
+            if (playVFXAfterDone)
+                PlayAnim("animation", false);
 
             if (lstObjectDragLinked.Length == 0)
             {

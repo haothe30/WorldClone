@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] LayerMask lm;
     [SerializeField] float speedDragObj = 5f;
     [SerializeField] GameObject objectGroupPos;
+    [SerializeField] SkeletonGraphic boxSG;
     DataManager dataController;
     bool win;
     Sprite endSprite;
@@ -475,20 +477,31 @@ public class GamePlayManager : MonoBehaviour
     {
         if (countDecor >= 0)
         {
-            levelController.GetLstObjectDrag()[countDecor].PlayAnimStartGame();
-            if (countDecor >= levelController.GetLstObjectDrag().Count - 1)
-            {
-                thisButton.enabled = false;
-                countDecor = -1;
-            }
-            else
-            {
-                countDecor++;
-                levelController.GetLstObjectDrag()[countDecor].gameObject.SetActive(transform);
-            }
+            boxSG.AnimationState.SetAnimation(0, "animation", false);
 
+            bool canAction = true;
             if (DataParamManager.isTuroring)
-                TutorialManager.tutorial.ActiveHandhint(false, "");
+            {
+                if (TutorialManager.tutorial.GetTutCount() == 2 || TutorialManager.tutorial.GetTutCount() == 4)
+                    canAction = false;
+                else
+                    TutorialManager.tutorial.ActiveHandhint(false, "");
+            }
+            if (canAction)
+            {
+                levelController.GetLstObjectDrag()[countDecor].PlayAnimStartGame();
+                if (countDecor >= levelController.GetLstObjectDrag().Count - 1)
+                {
+                    thisButton.enabled = false;
+                    countDecor = -1;
+                    boxSG.AnimationState.SetAnimation(0, "finish", true);
+                }
+                else
+                {
+                    countDecor++;
+                    levelController.GetLstObjectDrag()[countDecor].gameObject.SetActive(transform);
+                }
+            }
         }
     }
     private void OnApplicationFocus(bool focus)
