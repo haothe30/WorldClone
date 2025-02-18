@@ -12,7 +12,7 @@ public class GamePlayUIManager : UIParent
     public static GamePlayUIManager Instance;
     [SerializeField] Text timeText, levelText;
     [SerializeField] GameObject allUI;
-    [SerializeField] GameObject  iconVideoHint, boxButton, doneDecorIcon;
+    [SerializeField] GameObject  iconVideoHint, doneDecorIcon;
     [SerializeField] Animator btnAddTime;
     [SerializeField] Image fillIMG;
     public GameObject GetBtnAddTime()

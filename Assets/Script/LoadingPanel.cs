@@ -49,6 +49,7 @@ public class LoadingPanel : MonoBehaviour
         {
             nameNextScene = "Play";
             DataParamManager.isTuroring = true;
+            Instantiate(Resources.Load<TutorialManager>("TutorialManager"), DataManager.instance.transform);
         }
         else
         {

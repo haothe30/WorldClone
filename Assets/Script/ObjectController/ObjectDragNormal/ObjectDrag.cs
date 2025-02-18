@@ -53,11 +53,12 @@ public class ObjectDrag : ObjectDragParent
     Vector3 OriginPosition;
     public override void PlayAnimStartGame()
     {
-        transform.DOScale(0.9f, 1);
+        transform.DOScale(1f, 1);
         transform.DOMove(OriginPosition, 1f).OnComplete(() => 
         {
             objectAnimator.Play("ObjectFloat");
-
+            if (DataParamManager.isTuroring)
+                TutorialManager.tutorial.ActiveTut();
         });
     }
     public override void ActiveMe()
@@ -173,6 +174,9 @@ public class ObjectDrag : ObjectDragParent
                 }
 
             }
+
+            if (DataParamManager.isTuroring)
+                TutorialManager.tutorial.ActiveHandhint(false, "");
 
             MusicManager.instance.PlaySoundLevelOneShot(true, GetIndexSoundDown());
         }
@@ -472,6 +476,9 @@ public class ObjectDrag : ObjectDragParent
     public override void DoneMe()
     {
         objectAnimator.Play("ObjectIdle");
+
+        if (DataParamManager.isTuroring)
+            TutorialManager.tutorial.ActiveTut();
 
         GamePlayUIManager.Instance.CaculateProcessnig();
 

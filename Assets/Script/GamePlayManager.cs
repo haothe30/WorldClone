@@ -53,6 +53,8 @@ public class GamePlayManager : MonoBehaviour
         maxStarCanTake = 3;
         LoadLevel();
         DataParamManager.activeCountPlay = true;
+        if (DataParamManager.isTuroring)
+            TutorialManager.tutorial.ActiveTut();
     }
     void ActiveCountTime(bool active)
     {
@@ -140,6 +142,7 @@ public class GamePlayManager : MonoBehaviour
         {
             ActiveCountTime(true);
         }
+      
     }
     bool CanNotAction()
     {
@@ -483,6 +486,9 @@ public class GamePlayManager : MonoBehaviour
                 countDecor++;
                 levelController.GetLstObjectDrag()[countDecor].gameObject.SetActive(transform);
             }
+
+            if (DataParamManager.isTuroring)
+                TutorialManager.tutorial.ActiveHandhint(false, "");
         }
     }
     private void OnApplicationFocus(bool focus)

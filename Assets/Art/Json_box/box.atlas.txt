@@ -1,0 +1,10 @@
+box.png
+size:276,176
+filter:Linear,Linear
+pma:true
+box before
+bounds:2,4,168,137
+rotate:90
+thung mo
+bounds:141,2,170,133
+rotate:90
