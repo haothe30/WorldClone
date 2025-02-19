@@ -531,10 +531,7 @@ public class ObjectDrag : ObjectDragParent
         transform.DOMove(_objectTargetPos, speedMoveToTarget).SetEase(Ease.Linear).OnComplete(() =>
         {
             _objectTarget.ActiveLstObjectAfterDoneMe();
-            for (int i = 0; i < GetLstObjectDisableAfterDone().Length; i++)
-            {
-                GetLstObjectDisableAfterDone()[i].SetActive(false);
-            }
+           
 
             if (playVFXAfterDone)
                 PlayAnim("animation", false);
@@ -543,7 +540,10 @@ public class ObjectDrag : ObjectDragParent
             {
                 GamePlayManager.Instance.GetLevelController().PushEventCheckDoneStep(GetOriginalIndex().ToString());
 
-
+                for (int i = 0; i < GetLstObjectDisableAfterDone().Length; i++)
+                {
+                    GetLstObjectDisableAfterDone()[i].SetActive(false);
+                }
 
                 if (GetLstNextObjectActiveAfterDone.Count == 0)
                 {
@@ -573,6 +573,10 @@ public class ObjectDrag : ObjectDragParent
                 {
                     GamePlayManager.Instance.GetLevelController().PushEventCheckDoneStep(GetOriginalIndex().ToString());
 
+                    for (int i = 0; i < GetLstObjectDisableAfterDone().Length; i++)
+                    {
+                        GetLstObjectDisableAfterDone()[i].SetActive(false);
+                    }
 
                     if (GetLstNextObjectActiveAfterDone.Count == 0)
                     {

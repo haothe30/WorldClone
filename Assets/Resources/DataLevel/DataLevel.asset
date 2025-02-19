@@ -13,43 +13,31 @@ MonoBehaviour:
   m_Name: DataLevel
   m_EditorClassIdentifier: 
   levelInfo:
-  - indexLevel: 1
+  - indexLevel: 0
     indexPrefab: 1
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 2
+  - indexLevel: 1
     indexPrefab: 2
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 3
+  - indexLevel: 2
     indexPrefab: 3
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 4
+  - indexLevel: 3
     indexPrefab: 4
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 5
+  - indexLevel: 4
     indexPrefab: 5
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 6
+  - indexLevel: 5
     indexPrefab: 6
     maxTime: 120
     totalStarToUnlock: 3
-  - indexLevel: 7
+  - indexLevel: 6
     indexPrefab: 7
-    maxTime: 120
-    totalStarToUnlock: 3
-  - indexLevel: 8
-    indexPrefab: 8
-    maxTime: 120
-    totalStarToUnlock: 3
-  - indexLevel: 9
-    indexPrefab: 9
-    maxTime: 120
-    totalStarToUnlock: 3
-  - indexLevel: 10
-    indexPrefab: 10
     maxTime: 120
     totalStarToUnlock: 3

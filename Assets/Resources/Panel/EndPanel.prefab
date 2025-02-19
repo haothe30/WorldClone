@@ -2258,7 +2258,7 @@ MonoBehaviour:
   - {fileID: 873629961272098844}
   - {fileID: 5189596188039080284}
   - {fileID: 1610802985881014834}
-  loseImg: {fileID: 0}
+  loseImg: {fileID: 515302756797149639}
   winImg: {fileID: 1522702373148971169}
 --- !u!1 &3877020301465897738
 GameObject:

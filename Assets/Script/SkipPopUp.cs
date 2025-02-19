@@ -8,17 +8,18 @@ public class SkipPopUp : UIProperties
 {
     [SerializeField] Text ticketText;
     [SerializeField] GameObject bouderTop;
-
+    [SerializeField] Image iconIMG;
     public override void OpenMe()
     {
         base.OpenMe();
         ticketText.text = "" + DataManager.instance.SaveData().totalTicket;
-        bouderTop.SetActive(false);
+        //bouderTop.SetActive(false);
+        iconIMG.sprite = DataManager.instance.GetDataSpriteLevel().lstDataSpriteLevel[DataManager.instance.GetCurrentLevel().indexLevel + 1].selectLevel;
     }
     public override void ActiveAllBtn(bool active)
     {
         base.ActiveAllBtn(active);
-        bouderTop.SetActive(true);
+        //bouderTop.SetActive(true);
     }
     public void BtnSkip(bool free)
     {

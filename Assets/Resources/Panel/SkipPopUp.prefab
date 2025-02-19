@@ -1688,6 +1688,7 @@ MonoBehaviour:
   pointNativeAds: {fileID: 1054070857506161434}
   ticketText: {fileID: 717330221236744819}
   bouderTop: {fileID: 3162288831390530118}
+  iconIMG: {fileID: 6043069645538843358}
 --- !u!1 &8599254637803303249
 GameObject:
   m_ObjectHideFlags: 0
