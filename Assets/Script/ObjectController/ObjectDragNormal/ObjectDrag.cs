@@ -52,6 +52,8 @@ public class ObjectDrag : ObjectDragParent
     Vector3 OriginPosition;
     public override void PlayAnimStartGame()
     {
+        if (DataParamManager.isTuroring)
+            TutorialManager.tutorial.IncreaseTutCount();
         transform.DOScale(1f, 1);
         transform.DOMove(OriginPosition, 1f).OnComplete(() =>
         {
@@ -477,8 +479,10 @@ public class ObjectDrag : ObjectDragParent
         objectAnimator.Play("ObjectIdle");
 
         if (DataParamManager.isTuroring)
+        {
+            TutorialManager.tutorial.IncreaseTutCount();
             TutorialManager.tutorial.ActiveTut();
-
+        }
         GamePlayUIManager.Instance.CaculateProcessnig();
 
         if (needCorrectPos)
@@ -531,7 +535,7 @@ public class ObjectDrag : ObjectDragParent
         transform.DOMove(_objectTargetPos, speedMoveToTarget).SetEase(Ease.Linear).OnComplete(() =>
         {
             _objectTarget.ActiveLstObjectAfterDoneMe();
-           
+
 
             if (playVFXAfterDone)
                 PlayAnim("animation", false);

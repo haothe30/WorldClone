@@ -42,12 +42,16 @@ public class TutorialManager : MonoBehaviour
             }
             else if (tutCount == 4)
             {
+                gameObject.SetActive(false);
                 DataParamManager.isTuroring = false;
             }
-            tutCount++;
         }
     }
 
+    public void IncreaseTutCount()
+    {
+        tutCount++;
+    }
     public void ActiveHandhint(bool active, string nameAnim)
     {
         if (active)

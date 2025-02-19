@@ -144,7 +144,7 @@ public class GamePlayManager : MonoBehaviour
         {
             ActiveCountTime(true);
         }
-      
+
     }
     bool CanNotAction()
     {
@@ -482,7 +482,7 @@ public class GamePlayManager : MonoBehaviour
             bool canAction = true;
             if (DataParamManager.isTuroring)
             {
-                if (TutorialManager.tutorial.GetTutCount() == 2 || TutorialManager.tutorial.GetTutCount() == 4)
+                if (TutorialManager.tutorial.GetTutCount() == 1 || TutorialManager.tutorial.GetTutCount() == 3)
                     canAction = false;
                 else
                     TutorialManager.tutorial.ActiveHandhint(false, "");
