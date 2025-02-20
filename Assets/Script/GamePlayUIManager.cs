@@ -75,7 +75,7 @@ public class GamePlayUIManager : UIParent
             if (AdsManager.instance.CheckVideoReady())
             {
                 GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
-                AdsManager.instance.ShowVideoAds(RewardHint, "Hint_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+                AdsManager.instance.ShowVideoAds(RewardHint, "btnboosterhint_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
             }
             else
             {
@@ -113,7 +113,16 @@ public class GamePlayUIManager : UIParent
             return;
         MusicManager.instance.SoundClickButton();
         GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
-        DataManager.instance.ShowPausePopUp();
+        DataManager.instance.ShowSettingPanel();
+
+    }
+    public void BtnRemoveAds()
+    {
+        if (DataManager.instance.CanNotAction() || DataParamManager.state != DataParamManager.STATEGAMEPLAY.PLAY || DataParamManager.isTuroring)
+            return;
+        MusicManager.instance.SoundClickButton();
+        GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
+        DataManager.instance.ShowRemoveAdsPanel();
 
     }
     public void BtnAddTime()
@@ -125,7 +134,7 @@ public class GamePlayUIManager : UIParent
         if (AdsManager.instance.CheckVideoReady())
         {
             GamePlayManager.Instance.ChangeStageDisplayPopUp(true);
-            AdsManager.instance.ShowVideoAds(CallAddTime, "AddTime_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+            AdsManager.instance.ShowVideoAds(CallAddTime, "btnboostertime_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
         }
         else
         {

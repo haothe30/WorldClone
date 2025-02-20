@@ -133,7 +133,7 @@ public class EndPanel : UIProperties
         if (DataManager.instance.CanNotAction())
             return;
         MusicManager.instance.SoundClickButton();
-        AdsManager.instance.ShowVideoAds(RewardSkip, "Skip_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+        AdsManager.instance.ShowVideoAds(RewardSkip, "btnlosenextlevel_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
     }
     void RewardSkip()
     {

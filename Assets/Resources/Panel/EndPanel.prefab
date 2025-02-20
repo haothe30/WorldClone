@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 8305124878450207520}
   - component: {fileID: 1327890122319904192}
   m_Layer: 5
-  m_Name: BtnNext
+  m_Name: btnlosenextlevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 3855557336078447772}
   - component: {fileID: 7410241008566978695}
   m_Layer: 5
-  m_Name: BtnReplayLose
+  m_Name: btnretry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 4910697793330914684}
   - component: {fileID: 5469428894315375084}
   m_Layer: 5
-  m_Name: BtnHomeLose
+  m_Name: btnlosehome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2553,7 +2553,7 @@ GameObject:
   - component: {fileID: 667456440327000482}
   - component: {fileID: 1039645539468337454}
   m_Layer: 5
-  m_Name: BtnNext
+  m_Name: btnwinplayon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4299,7 +4299,7 @@ GameObject:
   - component: {fileID: 863495479209864924}
   - component: {fileID: 7060281993032730127}
   m_Layer: 5
-  m_Name: BtnHomeWin
+  m_Name: btnwinhome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

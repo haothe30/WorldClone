@@ -264,6 +264,12 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
         if (fireBaseInitDone)
         {
             FirebaseAnalytics.LogEvent("rewardsucess_" + value + "_ss_" + dataController.SaveData().session);
+
+
+            if (SceneManager.GetActiveScene().name == "Play")
+            {
+                FirebaseAnalytics.LogEvent("rewardGPlaylv_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
+            }
         }
         if (ByteBrew.IsByteBrewInitialized())
         {
@@ -272,8 +278,18 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
             eventParameters.Add("session", dataController.SaveData().session.ToString());
             ByteBrew.NewCustomEvent("rewardsucess", eventParameters);
             ByteBrew.TrackAdEvent(ByteBrewAdTypes.Reward, value);
+
+            if (SceneManager.GetActiveScene().name == "Play")
+            {
+                Dictionary<string, string> eventParameters2 = new Dictionary<string, string>();
+                eventParameters2.Add("rewardGPlaylv_", (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+                eventParameters2.Add("session", dataController.SaveData().session.ToString());
+                ByteBrew.NewCustomEvent("rewardGPlaylv_", eventParameters2);
+            }
+
         }
         Debug.LogError("rewardsucess_" + value + "_ss_" + dataController.SaveData().session);
+        Debug.LogError("rewardGPlaylv_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
     }
     public static void SUM_VIDEO_SHOW_NAME(string value)
     {
@@ -378,24 +394,24 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
     }
     public static void BUYTICKET(UnityEngine.Purchasing.Product product)
     {
-        if (fireBaseInitDone)
-        {
-            FirebaseAnalytics.LogEvent("ticketpack_" + DataParamManager.indexPackIAP + "_ss_" + dataController.SaveData().session);
-        }
-        if (ByteBrew.IsByteBrewInitialized())
-        {
-#if UNITY_IOS
-            storeName = "Apple App Store";
-#elif UNITY_ANDROID
-            storeName = "Google Play Store";
-#endif
-            ByteBrew.TrackInAppPurchaseEvent(storeName, product.metadata.isoCurrencyCode, (float)product.metadata.localizedPrice, product.definition.id, "");
-            Dictionary<string, string> eventParameters = new Dictionary<string, string>();
-            eventParameters.Add("pack", DataParamManager.indexPackIAP.ToString());
-            eventParameters.Add("session", dataController.SaveData().session.ToString());
-            ByteBrew.NewCustomEvent("ticketpack", eventParameters);
-        }
-        Debug.LogError("ticketpack_" + DataParamManager.indexPackIAP + "_ss_" + dataController.SaveData().session);
+//        if (fireBaseInitDone)
+//        {
+//            FirebaseAnalytics.LogEvent("ticketpack_" + DataParamManager.indexPackIAP + "_ss_" + dataController.SaveData().session);
+//        }
+//        if (ByteBrew.IsByteBrewInitialized())
+//        {
+//#if UNITY_IOS
+//            storeName = "Apple App Store";
+//#elif UNITY_ANDROID
+//            storeName = "Google Play Store";
+//#endif
+//            ByteBrew.TrackInAppPurchaseEvent(storeName, product.metadata.isoCurrencyCode, (float)product.metadata.localizedPrice, product.definition.id, "");
+//            Dictionary<string, string> eventParameters = new Dictionary<string, string>();
+//            eventParameters.Add("pack", DataParamManager.indexPackIAP.ToString());
+//            eventParameters.Add("session", dataController.SaveData().session.ToString());
+//            ByteBrew.NewCustomEvent("ticketpack", eventParameters);
+//        }
+//        Debug.LogError("ticketpack_" + DataParamManager.indexPackIAP + "_ss_" + dataController.SaveData().session);
     }
 
     public static void FOLLOW_BUTTON_EVENT(string value, string nameScene)
@@ -404,14 +420,14 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
         {
             if (nameScene == "Menu")
             {
-                FirebaseAnalytics.LogEvent("menuclick_" + value + "_ss_" + dataController.SaveData().session);
-                Debug.LogError("menuclick_" + value + "_ss_" + dataController.SaveData().session);
+                FirebaseAnalytics.LogEvent("menuclick_" + value + "_level_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1));
+                Debug.LogError("menuclick_" + value + "_level_" + dataController.GetCurrentLevel().indexLevel + 1 + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1));
             }
 
             else if (nameScene == "Play")
             {
-                FirebaseAnalytics.LogEvent("playclick_" + value + "_ss_" + dataController.SaveData().session);
-                Debug.LogError("playclick_" + value + "_ss_" + dataController.SaveData().session);
+                FirebaseAnalytics.LogEvent("playclick_" + value + "_level_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1));
+                Debug.LogError("playclick_" + value + "_level_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1));
             }
         }
         if (ByteBrew.IsByteBrewInitialized())
@@ -425,7 +441,8 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
             {
                 eventParameters.Add("playclick", value);
             }
-            eventParameters.Add("session", dataController.SaveData().session.ToString());
+            eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
+            eventParameters.Add("pf", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
             ByteBrew.NewCustomEvent("click", eventParameters);
         }
 
@@ -581,35 +598,35 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
     }
     public static void PAYSKIP()
     {
-        if (fireBaseInitDone)
-        {
-            FirebaseAnalytics.LogEvent("payskip_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
-        }
-        if (ByteBrew.IsByteBrewInitialized())
-        {
-            Dictionary<string, string> eventParameters = new Dictionary<string, string>();
-            eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
-            eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
-            eventParameters.Add("session", dataController.SaveData().session.ToString());
-            ByteBrew.NewCustomEvent("payskip", eventParameters);
-        }
-        Debug.LogError("payskip_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
+        //if (fireBaseInitDone)
+        //{
+        //    FirebaseAnalytics.LogEvent("payskip_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
+        //}
+        //if (ByteBrew.IsByteBrewInitialized())
+        //{
+        //    Dictionary<string, string> eventParameters = new Dictionary<string, string>();
+        //    eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
+        //    eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
+        //    eventParameters.Add("session", dataController.SaveData().session.ToString());
+        //    ByteBrew.NewCustomEvent("payskip", eventParameters);
+        //}
+        //Debug.LogError("payskip_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
     }
     public static void PAYADDTIME()
     {
-        if (fireBaseInitDone)
-        {
-            FirebaseAnalytics.LogEvent("payaddtime_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
-        }
-        if (ByteBrew.IsByteBrewInitialized())
-        {
-            Dictionary<string, string> eventParameters = new Dictionary<string, string>();
-            eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
-            eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
-            eventParameters.Add("session", dataController.SaveData().session.ToString());
-            ByteBrew.NewCustomEvent("payaddtime", eventParameters);
-        }
-        Debug.LogError("payaddtime_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
+        //if (fireBaseInitDone)
+        //{
+        //    FirebaseAnalytics.LogEvent("payaddtime_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
+        //}
+        //if (ByteBrew.IsByteBrewInitialized())
+        //{
+        //    Dictionary<string, string> eventParameters = new Dictionary<string, string>();
+        //    eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
+        //    eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
+        //    eventParameters.Add("session", dataController.SaveData().session.ToString());
+        //    ByteBrew.NewCustomEvent("payaddtime", eventParameters);
+        //}
+        //Debug.LogError("payaddtime_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_ss_" + dataController.SaveData().session);
     }
     public static void BACKHOME()
     {
@@ -629,19 +646,34 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
     }
     public static void CHECKDONESTEPLEVEL(string value)
     {
+    //    if (fireBaseInitDone)
+    //    {
+    //        FirebaseAnalytics.LogEvent("donestep_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_" + value + "_ss_" + dataController.SaveData().session);
+    //    }
+    //    if (ByteBrew.IsByteBrewInitialized())
+    //    {
+    //        Dictionary<string, string> eventParameters = new Dictionary<string, string>();
+    //        eventParameters.Add("step", value);
+    //        eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
+    //        eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
+    //        eventParameters.Add("session", dataController.SaveData().session.ToString());
+    //        ByteBrew.NewCustomEvent("donestep", eventParameters);
+    //    }
+    //    Debug.LogError("donestep_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_" + value + "_ss_" + dataController.SaveData().session);
+    }
+    public static void CHECK_STEP_TUTORIAL(string value)
+    {
         if (fireBaseInitDone)
         {
-            FirebaseAnalytics.LogEvent("donestep_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_" + value + "_ss_" + dataController.SaveData().session);
+            FirebaseAnalytics.LogEvent("checksteptutorial_" + value);
         }
         if (ByteBrew.IsByteBrewInitialized())
         {
             Dictionary<string, string> eventParameters = new Dictionary<string, string>();
-            eventParameters.Add("step", value);
-            eventParameters.Add("level", (dataController.GetCurrentLevel().indexLevel + 1).ToString());
-            eventParameters.Add("prefab", (dataController.GetCurrentLevel().indexPrefab + 1).ToString());
-            eventParameters.Add("session", dataController.SaveData().session.ToString());
-            ByteBrew.NewCustomEvent("donestep", eventParameters);
+            eventParameters.Add("steptut", value);
+            ByteBrew.NewCustomEvent("checksteptutorial", eventParameters);
+            ByteBrew.TrackAdEvent(ByteBrewAdTypes.Interstitial, value);
         }
-        Debug.LogError("donestep_" + (dataController.GetCurrentLevel().indexLevel + 1) + "_pf_" + (dataController.GetCurrentLevel().indexPrefab + 1) + "_" + value + "_ss_" + dataController.SaveData().session);
+        Debug.LogError("checksteptutorial" + value);
     }
 }

@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 55829798}
   - component: {fileID: 55829797}
   m_Layer: 5
-  m_Name: BtnSkip
+  m_Name: BtnSkipLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 529478784}
   - component: {fileID: 529478783}
   m_Layer: 5
-  m_Name: BtnHint
+  m_Name: btnboosterhint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2041,7 +2041,7 @@ GameObject:
   - component: {fileID: 1781210443}
   - component: {fileID: 1781210446}
   m_Layer: 5
-  m_Name: BtnAddTime
+  m_Name: btnboostertime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

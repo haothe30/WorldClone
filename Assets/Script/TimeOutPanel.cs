@@ -48,7 +48,7 @@ public class TimeOutPanel : UIProperties
         if (DataManager.instance.CanNotAction())
             return;
         MusicManager.instance.SoundClickButton();
-        AdsManager.instance.ShowVideoAds(CallAddTime, "AddTime_" +(DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+        AdsManager.instance.ShowVideoAds(CallAddTime, "btntimelose_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
     }   
     public void BtnGiveUp()
     {

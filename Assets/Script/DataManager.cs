@@ -67,7 +67,7 @@ public class DataManager : MonoBehaviour
     UnlockLevelPopUp unlockLevelPopUp;
     SelectLevelPanel selectLevelPanel;
     SettingPanel settingPanel;
-    ShopPanel shopPanel;
+    //ShopPanel shopPanel;
     RemoveAdsPanel removeAdsPanel;
     WarningPopUp warningPopUp;
     WarningInternet warningInternet;
@@ -276,8 +276,11 @@ public class DataManager : MonoBehaviour
             {
                 if (i < saveData.pushEventTimePlaying.Count && !saveData.pushEventTimePlaying[i])
                 {
-                    EventManager.EVENTTIMEPLAYING(i + 1);
-                    saveData.pushEventTimePlaying[i] = true;
+                    if (i == 2 || i == 4 || i == 6 || i == 9 || i == 14)
+                    {
+                        EventManager.EVENTTIMEPLAYING(i + 1);
+                        saveData.pushEventTimePlaying[i] = true;
+                    }
                 }
             }
             if (getIntTimePlaying > saveData.pushEventTimePlaying.Count)
@@ -603,12 +606,12 @@ public class DataManager : MonoBehaviour
     }
     public void ShowShopPanel(string value)
     {
-        if (shopPanel == null)
-        {
-            shopPanel = Instantiate(Resources.Load<ShopPanel>("Panel/ShopPanel"));
-            AddPanelToList(shopPanel.gameObject);
-        }
-        shopPanel.OpenMe(value);
+        //if (shopPanel == null)
+        //{
+        //    shopPanel = Instantiate(Resources.Load<ShopPanel>("Panel/ShopPanel"));
+        //    AddPanelToList(shopPanel.gameObject);
+        //}
+        //shopPanel.OpenMe(value);
 
         if (SceneManager.GetActiveScene().name == "Menu")
         {
@@ -641,12 +644,12 @@ public class DataManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Menu")
         {
-            if (settingPanel != null)
-                settingPanel.CloseMe();
+            //if (settingPanel != null)
+            //    settingPanel.CloseMe();
             if (selectLevelPanel != null)
                 selectLevelPanel.CloseMe();
-            if (shopPanel != null)
-                shopPanel.CloseMe();
+            //if (shopPanel != null)
+            //    shopPanel.CloseMe();
         }
     }
     public void ShowSelectLevelPanel()
@@ -660,8 +663,8 @@ public class DataManager : MonoBehaviour
 
         if (settingPanel != null)
             settingPanel.CloseMe();
-        if (shopPanel != null)
-            shopPanel.CloseMe();
+        //if (shopPanel != null)
+        //    shopPanel.CloseMe();
         if (removeAdsPanel != null)
             removeAdsPanel.CloseMe();
     }
@@ -675,11 +678,14 @@ public class DataManager : MonoBehaviour
         settingPanel.OpenMe();
 
         if (selectLevelPanel != null)
+        {
             selectLevelPanel.CloseMe();
-        if (shopPanel != null)
-            shopPanel.CloseMe();
-        if (removeAdsPanel != null)
-            removeAdsPanel.CloseMe();
+            Debug.LogError("====================== nani");
+        }
+        //if (shopPanel != null)
+        //    shopPanel.CloseMe();
+        //if (removeAdsPanel != null)
+        //    removeAdsPanel.CloseMe();
     }
 
     public void ShowPausePopUp()
@@ -697,7 +703,7 @@ public class DataManager : MonoBehaviour
     }
     public bool CheckPanelActiveInGP()
     {
-        return (pausePopUp != null && pausePopUp.gameObject.activeSelf) || (timeOutPanel != null && timeOutPanel.gameObject.activeSelf) || (skipPopUp != null && skipPopUp.gameObject.activeSelf) || (hintPopUp != null && hintPopUp.gameObject.activeSelf) || (shopPanel != null && shopPanel.gameObject.activeSelf);
+        return (pausePopUp != null && pausePopUp.gameObject.activeSelf) || (timeOutPanel != null && timeOutPanel.gameObject.activeSelf) || (skipPopUp != null && skipPopUp.gameObject.activeSelf) || (hintPopUp != null && hintPopUp.gameObject.activeSelf) /*|| (shopPanel != null&& shopPanel.gameObject.activeSelf )*/;
     }
     public void ShowWarningInternet()
     {
@@ -765,7 +771,7 @@ public class DataManager : MonoBehaviour
         }
         timeOutPanel.OpenMe();
     }
-  
+
     public void ShowHackPopUp()
     {
         if (hackPopUp == null)

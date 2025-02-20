@@ -73,6 +73,10 @@ public class SettingPanel : UIProperties
         base.CloseMe();
         if (DataManager.instance.GetSelectLevelPanel() != null)
             DataManager.instance.GetSelectLevelPanel().OpenMe();
+        if (SceneManager.GetActiveScene().name == "Play")
+        {
+            GamePlayManager.Instance.ChangeStageDisplayPopUp(false);
+        }
     }
     public void BtnSound()
     {

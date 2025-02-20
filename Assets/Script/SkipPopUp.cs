@@ -28,7 +28,7 @@ public class SkipPopUp : UIProperties
         MusicManager.instance.SoundClickButton();
         if (free)
         {
-            AdsManager.instance.ShowVideoAds(Reward, "Skip_" +(DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
+            AdsManager.instance.ShowVideoAds(Reward, "btnnextlevel_" + (DataManager.instance.GetCurrentLevel().indexLevel + 1) + "_pf_" + (DataManager.instance.GetCurrentLevel().indexPrefab + 1));
         }
         else
         {

@@ -40,7 +40,7 @@ public class UnlockLevelPopUp : UIProperties
         if (DataManager.instance.CanNotAction())
             return;
         MusicManager.instance.SoundClickButton();
-        AdsManager.instance.ShowVideoAds(Reward, "UnlockLevel_" + (levelInfo.indexLevel + 1) + "_pf_" + (levelInfo.indexPrefab + 1));
+        AdsManager.instance.ShowVideoAds(Reward, "btnunlockLevel_" + (levelInfo.indexLevel + 1) + "_pf_" + (levelInfo.indexPrefab + 1));
     }
     void Reward()
     {

@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 916242332741691262}
   - component: {fileID: 5423507241648452306}
   m_Layer: 5
-  m_Name: BtnAddTimeTimeOut
+  m_Name: btntimelose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 5661515600643786352}
   - component: {fileID: 3718221567460107024}
   m_Layer: 5
-  m_Name: BtnGiveUpTimeOut
+  m_Name: notime_giveup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

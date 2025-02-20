@@ -76,5 +76,6 @@ public class TutorialManager : MonoBehaviour
             ActiveHandhint(true, "HandIdle");
             handHintAnimator.transform.DOMove(goalPos, 1f).SetLoops(-1, LoopType.Restart);
         }
+        EventManager.CHECK_STEP_TUTORIAL(tutCount.ToString());
     }
 }

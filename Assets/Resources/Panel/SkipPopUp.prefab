@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 6677624724330395526}
   - component: {fileID: 6748146884468796570}
   m_Layer: 5
-  m_Name: BtnSkipFreeSkip
+  m_Name: btnnextlevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
