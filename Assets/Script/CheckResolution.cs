@@ -27,16 +27,13 @@ public class CheckResolution : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "Menu")
                     canvasScaler.matchWidthOrHeight = 0f;
-
                 else
-                {
                     canvasScaler.matchWidthOrHeight = 0.35f;
-                    Camera.main.orthographicSize = 4.9f;
-                }
             }
 
             if (calculate)
             {
+                Camera.main.orthographicSize = 4.9f;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 2f)*/;
                 DataParamManager.percentDown = 2f;
                 //Camera.main.orthographicSize = 7.6f;
@@ -53,11 +50,11 @@ public class CheckResolution : MonoBehaviour
                 else
                 {
                     canvasScaler.matchWidthOrHeight = 0.5f;
-                    Camera.main.orthographicSize = 4;
                 }
             }
             if (calculate)
             {
+                Camera.main.orthographicSize = 4;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 3f)*/;
                 DataParamManager.percentDown = 2f;
             }
@@ -71,8 +68,7 @@ public class CheckResolution : MonoBehaviour
             {
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 3f)*/;
                 DataParamManager.percentDown = 2f;
-                if (SceneManager.GetActiveScene().name == "Play")
-                    Camera.main.orthographicSize = 4f;
+                Camera.main.orthographicSize = 4f;
             }
             Debug.LogError("=========== 1334/750f || 1280/720 || 1920/1080 || 2560/1440 || 16/9 || 855/481");
         }
@@ -87,11 +83,11 @@ public class CheckResolution : MonoBehaviour
                 else
                 {
                     canvasScaler.matchWidthOrHeight = 0.55f;
-                    Camera.main.orthographicSize = 4f;
                 }
             }
             if (calculate)
             {
+                Camera.main.orthographicSize = 4f;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 4f)*/;
                 DataParamManager.percentDown = 2f;
             }
@@ -108,11 +104,11 @@ public class CheckResolution : MonoBehaviour
                 else
                 {
                     canvasScaler.matchWidthOrHeight = 0.55f;
-                    Camera.main.orthographicSize = 4f;
                 }
-            }    
+            }
             if (calculate)
             {
+                Camera.main.orthographicSize = 4f;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 4f)*/;
                 DataParamManager.percentDown = 2f;
             }
@@ -129,11 +125,11 @@ public class CheckResolution : MonoBehaviour
                 else
                 {
                     canvasScaler.matchWidthOrHeight = 0.55f;
-                    Camera.main.orthographicSize = 4f;
                 }
-            }    
+            }
             if (calculate)
             {
+                Camera.main.orthographicSize = 4f;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 4.5f)*/;
                 DataParamManager.percentDown = 2f;
             }
@@ -150,11 +146,11 @@ public class CheckResolution : MonoBehaviour
                 else
                 {
                     canvasScaler.matchWidthOrHeight = 0.55f;
-                    Camera.main.orthographicSize = 3.9f;
                 }
-            } 
+            }
             if (calculate)
             {
+                Camera.main.orthographicSize = 3.9f;
                 DataParamManager.percentTakePicture = Screen.width /*- (Screen.width / 5f)*/;
                 DataParamManager.percentDown = 2f;
             }

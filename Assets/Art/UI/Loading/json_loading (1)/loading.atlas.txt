@@ -1,0 +1,16 @@
+loading.png
+size:208,176
+filter:Linear,Linear
+pma:true
+1
+bounds:2,2,102,74
+2
+bounds:119,102,87,71
+3
+bounds:110,23,78,77
+4
+bounds:2,78,106,63
+cham
+bounds:190,85,15,15
+loading
+bounds:2,143,115,30

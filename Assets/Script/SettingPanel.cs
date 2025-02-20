@@ -68,6 +68,16 @@ public class SettingPanel : UIProperties
         DisplaySetting();
         base.OpenMe();
     }
+    public void BtnHome()
+    {
+        if (DataManager.instance.CanNotAction())
+            return;
+        MusicManager.instance.SoundClickButton();
+        DataManager.instance.ShowLoadingPanel("Menu");
+        EventManager.BACKHOME();
+        DataManager.instance.ShowInterAllGame("HomePause");
+        //ShowMREC(false);
+    }
     public override void CloseMe()
     {
         base.CloseMe();

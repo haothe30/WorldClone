@@ -590,7 +590,7 @@ public class DataManager : MonoBehaviour
     }
     public void ShowInterAllGame(string nameEventInter)
     {
-        if (saveData.removeAds || saveData.totalPlay < 2 || anAds)
+        if (saveData.removeAds || saveData.totalPlay < 1 || anAds)
             return;
         if ((System.DateTime.Now - DataParamManager.beginShowInter).TotalSeconds > DataParamManager.timeDelayShowAds)
         {
