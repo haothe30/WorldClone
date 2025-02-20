@@ -17,8 +17,8 @@ public class UIProperties : MonoBehaviour
     {
         if (DataManager.instance.SaveData().removeAds || DataManager.instance.AnAds)
             return;
-        //if (pointNativeAds != null)
-        //    AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds.transform);
+        if (pointNativeAds != null)
+            AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds.transform);
     }
     public string GetNameForAnimPopUpOpen()
     {
@@ -88,7 +88,7 @@ public class UIProperties : MonoBehaviour
     public virtual void CloseMe()
     {
         gameObject.SetActive(false);
-       
+        AdsManager.instance.ActiveMREC(false);
     }
     public void BeforeClose()
     {

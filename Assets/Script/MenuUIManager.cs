@@ -12,7 +12,7 @@ public class MenuUIManager : UIParent
     public static MenuUIManager Instance;
     [SerializeField] Image[] bouderBtnImg, iconBtnImg;
     [SerializeField] Sprite[] bouderSp, iconSpOn, iconSpOff;
-
+    [SerializeField] Transform pointNativeAds;
     int currentTab = 0;
     public override void Awake()
     {
@@ -25,8 +25,9 @@ public class MenuUIManager : UIParent
 
         GetDataManager().ShowSelectLevelPanel();
 
-
-       // DisplayTab();
+        //if (pointNativeAds != null)
+        //    AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds);
+        // DisplayTab();
 
 
         MusicManager.instance.PlaySoundBGHome(true, GetDataManager().SaveData().currentMusicHome);

@@ -41,6 +41,7 @@ public class RemoveAdsPanel : UIProperties
         DataParamManager.displayRemoveAds += Display;
 
         AdsManager.instance.ActiveNativeAds(false, 0, null);
+        AdsManager.instance.ActiveMREC(true);
     }
     public void Display()
     {

@@ -687,6 +687,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1064661629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064661630}
+  - component: {fileID: 1064661632}
+  m_Layer: 5
+  m_Name: BorderNative
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1064661630
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064661629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1927506944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 472.6, y: -79}
+  m_SizeDelta: {x: 427.94, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1064661632
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064661629}
+  m_CullTransparentMesh: 1
 --- !u!1 &1089785054
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +868,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b66f7cc6950f60e41a6ed61a70f9194d, type: 3}
   - {fileID: 21300000, guid: 7a970afd617ef414db88182652210829, type: 3}
   - {fileID: 21300000, guid: febf8f6f1b9d5994eba8bef77fba258f, type: 3}
+  pointNativeAds: {fileID: 1064661630}
 --- !u!114 &1089785060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1414,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1712119455}
+  - {fileID: 1064661630}
   m_Father: {fileID: 1089785058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

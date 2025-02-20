@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "169157269070",
-    "project_id": "tidy-games-asmr-perfect",
-    "storage_bucket": "tidy-games-asmr-perfect.firebasestorage.app"
+    "project_number": "560647036225",
+    "project_id": "pet-decor-home-design",
+    "storage_bucket": "pet-decor-home-design.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:169157269070:android:59a58b99b10c2ce8cf951f",
+        "mobilesdk_app_id": "1:560647036225:android:45cc4df2622718c5da15c0",
         "android_client_info": {
-          "package_name": "com.gaia.tidy.asmr.perfect"
+          "package_name": "com.gaia.pet.decor.home.design"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDmw_eo7q3dOUzkOP1KZrEjq1o8n3nNmko"
+          "current_key": "AIzaSyA6euyJqop6zL07V6vTkQu_ZYjp78r4F9w"
         }
       ],
       "services": {

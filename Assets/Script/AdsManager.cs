@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Firebase.Analytics;
 using UnityEngine.UI;
+using com.unity3d.mediation;
 
 public class AdsManager : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class AdsManager : MonoBehaviour
     [SerializeField] string AOAAndroid;
     [SerializeField] string bannerAdapterIdAndroid;
     [SerializeField] string nativeId;
+    [SerializeField] string MRECIdAndroid;
 
     [SerializeField] string bannerIdIOS;
     [SerializeField] string interIdIOS;
@@ -47,6 +49,7 @@ public class AdsManager : MonoBehaviour
     [SerializeField] string AOAIOS;
     [SerializeField] string bannerAdapterIdIOS;
     [SerializeField] string nativeIdIOS;
+    [SerializeField] string MRECIdIOS;
 
     [SerializeField] string appIdAndroidTest, appIdIOSTest;
     [SerializeField] string bannerAdapterIdAndroidTest;
@@ -61,6 +64,7 @@ public class AdsManager : MonoBehaviour
     string videoId;
     string aoaId;
     string idNative;
+    string idMREC;
 
     bool doneWatchAds = false;
     Action acreward;
@@ -71,7 +75,17 @@ public class AdsManager : MonoBehaviour
 
     bool loadingReward = false;
 
-
+    public void ActiveMREC(bool show)
+    {
+        if (show)
+        {
+            ShowMREC();
+        }
+        else
+        {
+            HideMREC();
+        }
+    }
     public void ActiveNativeAds(bool show, int index, Transform point)
     {
         if (show)
@@ -254,13 +268,15 @@ public class AdsManager : MonoBehaviour
     public void Start()
     {
         SetPrivacy();
-        //  IronSource.Agent.validateIntegration();
+        IronSource.Agent.validateIntegration();
 #if UNITY_ANDROID
         appIdTemp = appId;
         bannerId = bannerIdAndroid;
         interId = interIdAndroid;
         videoId = videoIdAndroid;
         aoaId = AOAAndroid;
+        idMREC = MRECIdAndroid;
+
         if (testAds)
         {
             appIdTemp = appIdAndroidTest;
@@ -275,6 +291,7 @@ public class AdsManager : MonoBehaviour
         bannerId = bannerIdIOS;
         interId = interIdIOS;
         videoId = videoIdIOS;
+        idMREC = MRECIdIOS;
         aoaId = AOAIOS;
         if (testAds)
         {
@@ -287,8 +304,9 @@ public class AdsManager : MonoBehaviour
         }
 #endif
         InitAds();
+        IronSource.Agent.shouldTrackNetworkState(true);
 
-        // IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
+        IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
     }
     private void SetPrivacy()
     {
@@ -300,46 +318,46 @@ public class AdsManager : MonoBehaviour
         const bool doNotSell = false;
 
         //// Setting privacy settings to IronSource
-        //IronSource.Agent.setConsent(consent);
-        //IronSource.Agent.setMetaData("is_child_directed", childDirected.ToString());
-        //IronSource.Agent.setMetaData("do_not_sell", doNotSell.ToString());
+        IronSource.Agent.setConsent(consent);
+        IronSource.Agent.setMetaData("is_child_directed", childDirected.ToString());
+        IronSource.Agent.setMetaData("do_not_sell", doNotSell.ToString());
 
 
-        //if (testsui)
-        //    IronSource.Agent.setMetaData("is_test_suite", "enable");
+        if (testsui)
+            IronSource.Agent.setMetaData("is_test_suite", "enable");
 
     }
-    private void ImpressionDataReadyEvent(/*IronSourceImpressionData impressionData*/string message, MaxSdkBase.AdInfo adInfo)
+    private void ImpressionDataReadyEvent(IronSourceImpressionData impressionData/*string message, MaxSdkBase.AdInfo adInfo*/)
     {
-        if (EventManager.fireBaseInitDone)
+        //    if (EventManager.fireBaseInitDone)
+        //    {
+        //        if (impressionData == null) return;
+        //        if (impressionData.Revenue < 0) return;
+
+        //        Firebase.Analytics.Parameter[] adParameters = {
+        //    new Firebase.Analytics.Parameter("ad_platform", "Applovin"),
+        //    new Firebase.Analytics.Parameter("ad_source", adInfo.NetworkName),
+        //    new Firebase.Analytics.Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+        //    new Firebase.Analytics.Parameter("ad_format", adInfo.AdFormat),
+        //    new Firebase.Analytics.Parameter("currency","USD"),
+        //    new Firebase.Analytics.Parameter("value", adInfo.Revenue)
+        //};
+        //        FirebaseAnalytics.LogEvent("ad_impression", adParameters);
+
+        if (impressionData?.revenue != null)
         {
-            if (adInfo == null) return;
-            if (adInfo.Revenue < 0) return;
-
-            Firebase.Analytics.Parameter[] adParameters = {
-        new Firebase.Analytics.Parameter("ad_platform", "Applovin"),
-        new Firebase.Analytics.Parameter("ad_source", adInfo.NetworkName),
-        new Firebase.Analytics.Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
-        new Firebase.Analytics.Parameter("ad_format", adInfo.AdFormat),
-        new Firebase.Analytics.Parameter("currency","USD"),
-        new Firebase.Analytics.Parameter("value", adInfo.Revenue)
-    };
-            FirebaseAnalytics.LogEvent("ad_impression", adParameters);
-
-            //      if (impressionData?.revenue != null)
-            //      {
-            //          Firebase.Analytics.Parameter[] AdParameters = {
-            //  new Firebase.Analytics.Parameter("ad_platform", "ironSource"),
-            //  new Firebase.Analytics.Parameter("ad_source", impressionData.adNetwork),
-            //  new Firebase.Analytics.Parameter("ad_unit_name", impressionData.instanceName),
-            //  new Firebase.Analytics.Parameter("ad_format", impressionData.adUnit),
-            //  new Firebase.Analytics.Parameter("currency","USD"),
-            //  new Firebase.Analytics.Parameter("value", impressionData.revenue.Value)
-            //};
-            //          Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_impression", AdParameters);
-            //      }
+            Firebase.Analytics.Parameter[] AdParameters = {
+              new Firebase.Analytics.Parameter("ad_platform", "ironSource"),
+              new Firebase.Analytics.Parameter("ad_source", impressionData.adNetwork),
+              new Firebase.Analytics.Parameter("ad_unit_name", impressionData.instanceName),
+              new Firebase.Analytics.Parameter("ad_format", impressionData.adUnit),
+              new Firebase.Analytics.Parameter("currency","USD"),
+              new Firebase.Analytics.Parameter("value", impressionData.revenue.Value)
+            };
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_impression", AdParameters);
         }
     }
+    
 
     public void InitAdsAfterGDPR()
     {
@@ -350,8 +368,9 @@ public class AdsManager : MonoBehaviour
         MobileAds.Initialize(initStatus =>
         {
             RequestNativeAd0();
-            //  InitAOAAds();
+            InitAOAAds();
             InitBannerAdapter();
+            InitMREC();
         });
 
         RequestConfiguration requestConfiguration = new RequestConfiguration();
@@ -387,8 +406,7 @@ public class AdsManager : MonoBehaviour
         }
 
         //adaptiveSize =
-              //  AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(Screen.width / 2);
-
+        //  AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(Screen.width / 2);
 
         _bannerView = new BannerView(bannerAdapterId, AdSize.Leaderboard, AdPosition.Top);
 
@@ -504,56 +522,134 @@ public class AdsManager : MonoBehaviour
             //   Debug.LogError("================= banner collapsed load success");
         }
     }
+    
+    LevelPlayBannerAd bannerAd;
+    void InitMREC()
+    {
+        Debug.LogError("============== Init MREC:" + idMREC);
 
+        LevelPlayAdSize adSize = LevelPlayAdSize.BANNER;
+
+        // Set the placement name
+         bannerAd = new LevelPlayBannerAd(idMREC, LevelPlayAdSize.LARGE, LevelPlayBannerPosition.BottomCenter);
+
+        bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
+        bannerAd.OnAdLoadFailed += BannerOnAdLoadFailedEvent;
+        bannerAd.OnAdDisplayed += BannerOnAdDisplayedEvent;
+        bannerAd.OnAdDisplayFailed += BannerOnAdDisplayFailedEvent;
+        bannerAd.OnAdClicked += BannerOnAdClickedEvent;
+        bannerAd.OnAdCollapsed += BannerOnAdCollapsedEvent;
+        bannerAd.OnAdLeftApplication += BannerOnAdLeftApplicationEvent;
+        bannerAd.OnAdExpanded += BannerOnAdExpandedEvent;
+
+        bannerAd.LoadAd();
+
+        // Create the banner object and set the ad unit id 
+
+    }
+    void BannerOnAdLoadedEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= banner load thành công");
+    }
+    void BannerOnAdLoadFailedEvent(LevelPlayAdError ironSourceError) 
+    {
+        Debug.LogError("============================= banner load fail");
+    }
+    void BannerOnAdClickedEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= click vào banner");
+    }
+    void BannerOnAdDisplayedEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= show banner thành công");
+    }
+    void BannerOnAdDisplayFailedEvent(LevelPlayAdDisplayInfoError adInfoError) 
+    {
+        Debug.LogError("============================= show banner fail");
+    }
+    void BannerOnAdCollapsedEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= collap banner thành công");
+    }
+    void BannerOnAdLeftApplicationEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= witch app banner");
+    }
+    void BannerOnAdExpandedEvent(LevelPlayAdInfo adInfo) 
+    {
+        Debug.LogError("============================= expand banner thành công");
+    }
+    public void ShowMREC(/*RectTransform point*/)
+    {
+        //Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, point.transform.position);
+
+        //float density = MaxSdkUtils.GetScreenDensity();
+        //float xDp = screenPosition.x / density;
+        //float yDp = screenPosition.y / density;
+
+        //Rect safeArea = Screen.safeArea;
+        //float safeAreaHeightDp = safeArea.height / density;
+
+        //yDp = safeAreaHeightDp - yDp;
+
+        //MaxSdk.UpdateMRecPosition(idMREC, xDp, yDp);
+
+        if (DataManager.instance.AnAds || DataManager.instance.SaveData().removeAds)
+            return;
+        bannerAd.ShowAd();
+    }
+    public void HideMREC()
+    {
+        bannerAd.HideAd();
+    }
     public void InitAds()
     {
         if (DataManager.instance.AnAds)
             return;
 
-        MaxSdk.SetSdkKey(appIdTemp);
+        //MaxSdk.SetSdkKey(appIdTemp);
 
-        //   MaxSdk.SetUserId("USER_ID");
-        MaxSdk.InitializeSdk();
-        MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
-        {
-            // AppLovin SDK is initialized, start loading ads
-            InitializeInterstitialAds();
-            InitializeRewardedAds();
-            InitAOAAds();
-            //  InitBanner();
-            MaxSdkCallbacks.Interstitial.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
-            MaxSdkCallbacks.Rewarded.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
-            MaxSdkCallbacks.AppOpen.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
-            MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
+        ////   MaxSdk.SetUserId("USER_ID");
+        //MaxSdk.InitializeSdk();
+        //MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
+        //{
+        //    // AppLovin SDK is initialized, start loading ads
+        //InitializeInterstitialAds();
+        //InitializeRewardedAds();
+        // InitAOAAds();
+        //    //  InitBanner();
+        //MaxSdkCallbacks.Interstitial.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
+        //MaxSdkCallbacks.Rewarded.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
+        //MaxSdkCallbacks.AppOpen.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
+        //MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += ImpressionDataReadyEvent;
 
-            if (testsui)
-                MaxSdk.ShowCreativeDebugger();
-        };
+        //    if (testsui)
+        //        MaxSdk.ShowCreativeDebugger();
+        //};
 
 
-        // Debug.LogError("=========== init ads");
-        //IronSourceRewardedVideoEvents.onAdOpenedEvent += OnRewardDisplayEvent;
-        //IronSourceRewardedVideoEvents.onAdClosedEvent += OnRewardedAdDismissedEvent;
-        //IronSourceRewardedVideoEvents.onAdAvailableEvent += OnRewardedAdLoadedEvent;
-        //IronSourceRewardedVideoEvents.onAdUnavailableEvent += OnRewardedAdFailedEvent;
-        //IronSourceRewardedVideoEvents.onAdShowFailedEvent += OnRewardedAdFailedToDisplayEvent;
-        //IronSourceRewardedVideoEvents.onAdRewardedEvent += OnRewardedAdReceivedRewardEvent;
-        //IronSourceInterstitialEvents.onAdReadyEvent += OnInterstitialLoadedEvent;
-        //IronSourceInterstitialEvents.onAdLoadFailedEvent += OnInterstitialFailedEvent;
-        //IronSourceInterstitialEvents.onAdOpenedEvent += OnInterstitialDisplayEvent;
-        //IronSourceInterstitialEvents.onAdShowFailedEvent += InterstitialFailedToDisplayEvent;
-        //IronSourceInterstitialEvents.onAdClosedEvent += OnInterstitialDismissedEvent;
-        //IronSourceBannerEvents.onAdLoadedEvent += BannerAdLoadedEvent;
-        //IronSourceBannerEvents.onAdLoadFailedEvent += BannerAdLoadedEventFalse;
+        Debug.LogError("=========== init ads");
+        IronSourceRewardedVideoEvents.onAdClosedEvent += OnRewardedAdDismissedEvent;
+        IronSourceRewardedVideoEvents.onAdAvailableEvent += OnRewardedAdLoadedEvent;
+        IronSourceRewardedVideoEvents.onAdRewardedEvent += OnRewardedAdReceivedRewardEvent;
+        IronSourceRewardedVideoEvents.onAdLoadFailedEvent += OnRewardedAdFailedEvent;
 
-        //IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
-        //IronSource.Agent.init(appIdTemp);
+        IronSourceInterstitialEvents.onAdLoadFailedEvent += OnInterstitialFailedEvent;
+        IronSourceInterstitialEvents.onAdReadyEvent += OnInterstitialLoadedEvent;
+        IronSourceInterstitialEvents.onAdClosedEvent += OnInterstitialDismissedEvent;
+
+
+        IronSourceBannerEvents.onAdLoadedEvent += BannerAdLoadedEvent;
+        IronSourceBannerEvents.onAdLoadFailedEvent += BannerAdLoadedEventFalse;
+
+        IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
+        IronSource.Agent.init(appIdTemp);
+
     }
     private void SdkInitializationCompletedEvent()
     {
         RequestInterAds();
         RequestVideoAds();
-        // RequestBannerAds();
         //if (testsui)
         //    IronSource.Agent.launchTestSuite();
         Debug.LogError("================ init ads success");
@@ -561,37 +657,37 @@ public class AdsManager : MonoBehaviour
     }
     void InitAOAAds()
     {
-        MaxSdk.LoadAppOpenAd(aoaId);
+        //MaxSdk.LoadAppOpenAd(aoaId);
 
-        MaxSdkCallbacks.AppOpen.OnAdHiddenEvent += OnAppOpenDismissedEvent;
-        MaxSdkCallbacks.AppOpen.OnAdLoadedEvent += OnAppOpenLoadSuccess;
-        MaxSdkCallbacks.AppOpen.OnAdLoadFailedEvent += OnAppOpenLoadFalse;
+        //MaxSdkCallbacks.AppOpen.OnAdHiddenEvent += OnAppOpenDismissedEvent;
+        //MaxSdkCallbacks.AppOpen.OnAdLoadedEvent += OnAppOpenLoadSuccess;
+        //MaxSdkCallbacks.AppOpen.OnAdLoadFailedEvent += OnAppOpenLoadFalse;
 
 
-        //if (appOpenAd != null)
-        //{
-        //    appOpenAd.Destroy();
-        //    appOpenAd = null;
-        //}
-        //// Debug.LogError("============== AOA id:" + aoaId);
-        //AdRequest request = new AdRequest();
-        //AppOpenAd.Load(aoaId, request, (AppOpenAd ad, LoadAdError error) =>
-        // {
-        //     // if error is not null, the load request failed.
-        //     if (error != null || ad == null)
-        //     {
-        //         //Debug.LogError("===========app open ad failed to load an ad " +
-        //         //   "with error : " + error);
-        //         return;
-        //     }
+        if (appOpenAd != null)
+        {
+            appOpenAd.Destroy();
+            appOpenAd = null;
+        }
+        // Debug.LogError("============== AOA id:" + aoaId);
+        AdRequest request = new AdRequest();
+        AppOpenAd.Load(aoaId, request, (AppOpenAd ad, LoadAdError error) =>
+         {
+             // if error is not null, the load request failed.
+             if (error != null || ad == null)
+             {
+                 //Debug.LogError("===========app open ad failed to load an ad " +
+                 //   "with error : " + error);
+                 return;
+             }
 
-        //     //  Debug.LogError("===========App open ad loaded with response : "
-        //     //  + ad.GetResponseInfo());
+             //  Debug.LogError("===========App open ad loaded with response : "
+             //  + ad.GetResponseInfo());
 
-        //     appOpenAd = ad;
-        //     ad.OnAdFullScreenContentClosed += OnAppOpenDismissedEvent;
-        //     ad.OnAdPaid += OnAppOpenPaid;
-        // });
+             appOpenAd = ad;
+             ad.OnAdFullScreenContentClosed += OnAppOpenDismissedEvent;
+             ad.OnAdPaid += OnAppOpenPaid;
+         });
 
     }
 
@@ -613,17 +709,17 @@ public class AdsManager : MonoBehaviour
     }
 
 
-    private void OnAppOpenLoadFalse(string arg1, MaxSdkBase.ErrorInfo arg2)
-    {
-        loadingAOA = false;
-        Debug.LogError("========== AOA load false");
-    }
+    //private void OnAppOpenLoadFalse(string arg1, MaxSdkBase.ErrorInfo arg2)
+    //{
+    //    loadingAOA = false;
+    //    Debug.LogError("========== AOA load false");
+    //}
 
-    private void OnAppOpenLoadSuccess(string arg1, MaxSdkBase.AdInfo arg2)
-    {
-        loadingAOA = false;
-        Debug.LogError("========== AOA load success");
-    }
+    //private void OnAppOpenLoadSuccess(string arg1, MaxSdkBase.AdInfo arg2)
+    //{
+    //    loadingAOA = false;
+    //    Debug.LogError("========== AOA load success");
+    //}
 
     private void OnAppOpenDisplay(/*string arg1, MaxSdkBase.AdInfo arg2*/)
     {
@@ -634,7 +730,7 @@ public class AdsManager : MonoBehaviour
         Debug.LogError("===== displayed aoa");
     }
 
-    public void OnAppOpenDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+    public void OnAppOpenDismissedEvent(/*string adUnitId, MaxSdkBase.AdInfo adInfo*/)
     {
 
         MusicManager.instance.ChangeSettingMusic();
@@ -645,15 +741,15 @@ public class AdsManager : MonoBehaviour
         RequestAOA();
     }
 
-    public Color colorBanner;
-    public void InitBanner()
-    {
-        MaxSdkCallbacks.OnBannerAdLoadedEvent += BannerAdLoadedEvent;
-        MaxSdkCallbacks.OnBannerAdLoadFailedEvent += BannerAdLoadedEventFalse;
-        MaxSdk.CreateBanner(bannerId, MaxSdkBase.BannerPosition.TopCenter);
+    //public Color colorBanner;
+    //public void InitBanner()
+    //{
+    //    MaxSdkCallbacks.OnBannerAdLoadedEvent += BannerAdLoadedEvent;
+    //    MaxSdkCallbacks.OnBannerAdLoadFailedEvent += BannerAdLoadedEventFalse;
+    //    MaxSdk.CreateBanner(bannerId, MaxSdkBase.BannerPosition.TopCenter);
 
-        RequestBannerAds();
-    }
+    //    RequestBannerAds();
+    //}
 
 
 
@@ -664,10 +760,11 @@ public class AdsManager : MonoBehaviour
         //MaxSdkCallbacks.OnInterstitialAdFailedToDisplayEvent -= InterstitialFailedToDisplayEvent;
         //MaxSdkCallbacks.OnInterstitialHiddenEvent -= OnInterstitialDismissedEvent;
         //MaxSdkCallbacks.OnInterstitialDisplayedEvent -= OnInterstitialDisplayEvent;
+
         //// Attach callback
-        MaxSdkCallbacks.OnInterstitialLoadedEvent += OnInterstitialLoadedEvent;
-        MaxSdkCallbacks.OnInterstitialLoadFailedEvent += OnInterstitialFailedEvent;
-        MaxSdkCallbacks.OnInterstitialHiddenEvent += OnInterstitialDismissedEvent;
+        //MaxSdkCallbacks.OnInterstitialLoadedEvent += OnInterstitialLoadedEvent;
+        //MaxSdkCallbacks.OnInterstitialLoadFailedEvent += OnInterstitialFailedEvent;
+        //MaxSdkCallbacks.OnInterstitialHiddenEvent += OnInterstitialDismissedEvent;
         // Load the first interstitial
         RequestInterAds();
     }
@@ -679,27 +776,28 @@ public class AdsManager : MonoBehaviour
         //MaxSdkCallbacks.OnRewardedAdHiddenEvent -= OnRewardedAdDismissedEvent;
         //MaxSdkCallbacks.OnRewardedAdReceivedRewardEvent -= OnRewardedAdReceivedRewardEvent;
         //MaxSdkCallbacks.OnRewardedAdDisplayedEvent -= OnRewardDisplayEvent;
+
         //// Attach callback
-        MaxSdkCallbacks.OnRewardedAdLoadedEvent += OnRewardedAdLoadedEvent;
-        MaxSdkCallbacks.OnRewardedAdLoadFailedEvent += OnRewardedAdFailedEvent;
-        MaxSdkCallbacks.OnRewardedAdHiddenEvent += OnRewardedAdDismissedEvent;
-        MaxSdkCallbacks.OnRewardedAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
+        //MaxSdkCallbacks.OnRewardedAdLoadedEvent += OnRewardedAdLoadedEvent;
+        //MaxSdkCallbacks.OnRewardedAdLoadFailedEvent += OnRewardedAdFailedEvent;
+        //MaxSdkCallbacks.OnRewardedAdHiddenEvent += OnRewardedAdDismissedEvent;
+        //MaxSdkCallbacks.OnRewardedAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
         // Load the first rewarded ad
         RequestVideoAds();
     }
-    private void OnRewardedAdLoadedEvent(string adUnitId/*IronSourceAdInfo adInfo*/)
+    private void OnRewardedAdLoadedEvent(/*string adUnitId*/IronSourceAdInfo adInfo)
     {
         loadingReward = false;
         Debug.LogError("========= video load sucess:");
     }
 
-    private void OnRewardedAdFailedEvent(string adUnitId, int errorCode /*IronSourceError error*/)
+    private void OnRewardedAdFailedEvent(/*string adUnitId*//*int errorCode,*/ IronSourceError error)
     {
         loadingReward = false;
         Debug.LogError("========= video load false:" /*+ error.ToString()*/);
     }
 
-    private void OnRewardedAdDismissedEvent(string adUnitId /*IronSourceAdInfo adInfo*/)
+    private void OnRewardedAdDismissedEvent(/*string adUnitId,*/ IronSourceAdInfo adInfo)
     {
         DataParamManager.ResumeFromAds = false;
         MusicManager.instance.ChangeSettingMusic();
@@ -720,7 +818,7 @@ public class AdsManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Play")
         {
-            if (nameEventVideo.Contains("AddTime_") || nameEventVideo.Contains("Hint_"))
+            if (nameEventVideo.Contains("btnboostertime_") || nameEventVideo.Contains("btnboosterhint_"))
             {
                 GamePlayManager.Instance.ChangeStageDisplayPopUp(false);
             }
@@ -731,21 +829,21 @@ public class AdsManager : MonoBehaviour
 
     }
 
-    private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward /*IronSourcePlacement placement, IronSourceAdInfo adInfo*/)
+    private void OnRewardedAdReceivedRewardEvent(/*string adUnitId, *//*MaxSdk.Reward reward */IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
         doneWatchAds = true;
     }
-    private void OnInterstitialLoadedEvent(string adUnitId /*IronSourceAdInfo adInfo*/)
+    private void OnInterstitialLoadedEvent(/*string adUnitId*/ IronSourceAdInfo adInfo)
     {
         Debug.LogError("========= inter load sucess");
         loadingInter = false;
     }
-    private void OnInterstitialFailedEvent(string adUnitId, int errorCode /*IronSourceError ironSourceError*/)
+    private void OnInterstitialFailedEvent(/*string adUnitId,*/ /*int errorCode,*/ IronSourceError ironSourceError)
     {
         Debug.LogError("========= inter load false");
         loadingInter = false;
     }
-    private void OnInterstitialDismissedEvent(string adUnitId /*IronSourceAdInfo adInfo*/)
+    private void OnInterstitialDismissedEvent(/*string adUnitId*/ IronSourceAdInfo adInfo)
     {
         MusicManager.instance.ChangeSettingMusic();
         MusicManager.instance.ChangeSettingSound();
@@ -759,28 +857,28 @@ public class AdsManager : MonoBehaviour
     {
         if (!loadingReward)
         {
-            MaxSdk.LoadRewardedAd(videoId);
+            //MaxSdk.LoadRewardedAd(videoId);
+            IronSource.Agent.loadRewardedVideo();
             loadingReward = true;
         }
-        // IronSource.Agent.loadRewardedVideo();
     }
     public void RequestInterAds()
     {
         if(!loadingInter){
-            MaxSdk.LoadInterstitial(interId);
+            //MaxSdk.LoadInterstitial(interId);
             loadingInter = true;
-            // IronSource.Agent.loadInterstitial();
+            IronSource.Agent.loadInterstitial();
         }
     }
     void RequestBannerAds()
     {
-        MaxSdk.LoadBanner(bannerId);
-        // IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        //MaxSdk.LoadBanner(bannerId);
+        IronSource.Agent.loadBanner(IronSourceBannerSize.LARGE, IronSourceBannerPosition.TOP);
         // Debug.LogError("========== init banner IRS");
 
     }
     public bool bannerOK;
-    private void BannerAdLoadedEvent(string adUnitId /*IronSourceAdInfo adInfo*/)
+    private void BannerAdLoadedEvent(/*string adUnitId */IronSourceAdInfo adInfo)
     {
         if (!bannerOK)
         {
@@ -795,7 +893,7 @@ public class AdsManager : MonoBehaviour
             //}
         }
     }
-    private void BannerAdLoadedEventFalse(string s, int i /*IronSourceError ironSourceError*/)
+    private void BannerAdLoadedEventFalse(/*string s, int i, */IronSourceError ironSourceError)
     {
         Debug.LogError("====load banner  false ");
         bannerOK = false;
@@ -822,7 +920,8 @@ public class AdsManager : MonoBehaviour
         if (DataManager.instance.AnAds)
             return true;
         else
-            return MaxSdk.IsRewardedAdReady(videoId) /*IronSource.Agent.isRewardedVideoAvailable()*/;
+            return /*MaxSdk.IsRewardedAdReady(videoId) */IronSource.Agent.isRewardedVideoAvailable();
+
     }
     public void ShowAOAAds(string _nameEventAOA)
     {
@@ -854,7 +953,7 @@ public class AdsManager : MonoBehaviour
     {
         if(!loadingAOA)
         {
-            MaxSdk.LoadAppOpenAd(aoaId);
+            //MaxSdk.LoadAppOpenAd(aoaId);
             loadingAOA = true;
         }
     }
@@ -905,11 +1004,11 @@ public class AdsManager : MonoBehaviour
             return;
         if (DataManager.instance.AnAds)
             return;
-        if (/*IronSource.Agent.isInterstitialReady()*/MaxSdk.IsInterstitialReady(interId))
+        if (IronSource.Agent.isInterstitialReady()/*MaxSdk.IsInterstitialReady(interId)*/)
         {
             nameEventInter = _nameEventInter;
-            // IronSource.Agent.showInterstitial(nameEventInter);
-            MaxSdk.ShowInterstitial(interId);
+            IronSource.Agent.showInterstitial(nameEventInter);
+            //MaxSdk.ShowInterstitial(interId);
             DataParamManager.ResumeFromAds = true;
 
             EventManager.SUM_INTER_ALL_GAME(nameEventInter);

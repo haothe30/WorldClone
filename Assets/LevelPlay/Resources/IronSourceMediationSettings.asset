@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b5606017c703842dcb20cae425c760f0, type: 3}
   m_Name: IronSourceMediationSettings
-  m_EditorClassIdentifier: Unity.LevelPlay::IronSourceMediationSettings
-  AndroidAppKey: 
+  m_EditorClassIdentifier: 
+  AndroidAppKey: 2113c4bc5
   IOSAppKey: 
   EnableIronsourceSDKInitAPI: 0
-  AddIronsourceSkadnetworkID: 0
-  DeclareAD_IDPermission: 0
+  AddIronsourceSkadnetworkID: 1
+  DeclareAD_IDPermission: 1
   EnableAdapterDebug: 0
   EnableIntegrationHelper: 0

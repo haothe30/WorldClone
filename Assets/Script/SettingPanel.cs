@@ -67,6 +67,7 @@ public class SettingPanel : UIProperties
         currentLanguageText.text = lstLanguageCurrent[currentLanguage];
         DisplaySetting();
         base.OpenMe();
+        AdsManager.instance.ActiveMREC(true);
     }
     public void BtnHome()
     {
