@@ -19,6 +19,8 @@ public class UIProperties : MonoBehaviour
             return;
         if (pointNativeAds != null)
             AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds.transform);
+
+        Debug.LogError("===================== here u mother f");
     }
     public string GetNameForAnimPopUpOpen()
     {

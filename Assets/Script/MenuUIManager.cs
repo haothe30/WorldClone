@@ -25,8 +25,8 @@ public class MenuUIManager : UIParent
 
         GetDataManager().ShowSelectLevelPanel();
 
-        //if (pointNativeAds != null)
-        //    AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds);
+        if (pointNativeAds != null)
+            AdsManager.instance.ActiveNativeAds(true, 0, pointNativeAds);
         // DisplayTab();
 
 

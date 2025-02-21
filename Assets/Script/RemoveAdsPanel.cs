@@ -82,11 +82,14 @@ public class RemoveAdsPanel : UIProperties
         {
             DataManager.instance.GetEndPanel().ShowNativeAds();
         }
-        if (DataManager.instance.GetSelectLevelPanel() != null)
-            DataManager.instance.GetSelectLevelPanel().OpenMe();
         if (SceneManager.GetActiveScene().name == "Play")
         {
             GamePlayManager.Instance.ChangeStageDisplayPopUp(false);
+        }
+        else
+        {
+            if (DataManager.instance.GetSelectLevelPanel() != null)
+                DataManager.instance.GetSelectLevelPanel().OpenMe();
         }
         // AdsManager.instance.ShowBannerAds();
     }

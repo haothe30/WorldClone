@@ -503,7 +503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 83.154686, y: 43.3}
+  m_AnchoredPosition: {x: 47.5, y: 22.1}
   m_SizeDelta: {x: 118.3288, y: 40.834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &417677763
@@ -758,7 +758,7 @@ MonoBehaviour:
   - key: levelData_v2
     value: '{"name":"DataLevel","hideFlags":0,"lstDataLevel":[{"levelInfo":[{"indexLevel":0,"indexPrefab":0,"maxTime":180.0,"totalStarToUnlock":0},{"indexLevel":1,"indexPrefab":1,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":2,"indexPrefab":2,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":3,"indexPrefab":3,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":4,"indexPrefab":4,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":5,"indexPrefab":5,"maxTime":90.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":6,"indexPrefab":6,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":7,"indexPrefab":7,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":8,"indexPrefab":8,"maxTime":120.0,"totalStarToUnlock":20}]},{"levelInfo":[{"indexLevel":9,"indexPrefab":9,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":10,"indexPrefab":10,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":11,"indexPrefab":11,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":12,"indexPrefab":12,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":13,"indexPrefab":13,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":14,"indexPrefab":14,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":15,"indexPrefab":15,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":16,"indexPrefab":16,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":17,"indexPrefab":17,"maxTime":139.0,"totalStarToUnlock":43}]},{"levelInfo":[{"indexLevel":18,"indexPrefab":18,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":19,"indexPrefab":19,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":20,"indexPrefab":20,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":21,"indexPrefab":21,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":22,"indexPrefab":22,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":23,"indexPrefab":23,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":24,"indexPrefab":24,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":25,"indexPrefab":25,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":26,"indexPrefab":26,"maxTime":120.0,"totalStarToUnlock":65}]},{"levelInfo":[{"indexLevel":27,"indexPrefab":27,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":28,"indexPrefab":28,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":29,"indexPrefab":29,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":30,"indexPrefab":30,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":31,"indexPrefab":31,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":32,"indexPrefab":32,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":33,"indexPrefab":33,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":34,"indexPrefab":34,"maxTime":120.0,"totalStarToUnlock":0}]},{"levelInfo":[{"indexLevel":35,"indexPrefab":35,"maxTime":120.0,"totalStarToUnlock":88}]},{"levelInfo":[{"indexLevel":36,"indexPrefab":36,"maxTime":120.0,"totalStarToUnlock":0},{"indexLevel":37,"indexPrefab":37,"maxTime":120.0,"totalStarToUnlock":0}]}]}'
   - key: id_native
-    value: ca-app-pub-2705659822226318/5388872716
+    value: ca-app-pub-2705659822226318/9902848707
 --- !u!4 &523708753
 Transform:
   m_ObjectHideFlags: 0
@@ -976,12 +976,14 @@ MonoBehaviour:
   AOAAndroid: ca-app-pub-2705659822226318/3591186252
   bannerAdapterIdAndroid: ca-app-pub-2705659822226318/8781338723
   nativeId: ca-app-pub-2705659822226318/9902848707
+  MRECIdAndroid: y3v21i0wj9jw9lsi
   bannerIdIOS: 
   interIdIOS: 
   videoIdIOS: 
   AOAIOS: 
   bannerAdapterIdIOS: 
   nativeIdIOS: 
+  MRECIdIOS: 
   appIdAndroidTest: 85460dcd
   appIdIOSTest: 
   bannerAdapterIdAndroidTest: ca-app-pub-3940256099942544/2014213617
@@ -1243,8 +1245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.61769867, y: 0}
+  m_SizeDelta: {x: -21.0006, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1065769849
 BoxCollider2D:
@@ -1791,8 +1793,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 94.2, y: 5.6}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 102.1, y: 1.4272}
+  m_SizeDelta: {x: 80, y: 76.1498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1456535579
 CanvasRenderer:
@@ -1861,7 +1863,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.42042542, y: -0.42044067}
+  m_Offset: {x: 0.42044067, y: -0.90171814}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1872,7 +1874,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 86.9332, y: 85.2514}
+  m_Size: {x: 81.1579, y: 78.51352}
   m_EdgeRadius: 0
 --- !u!1 &1535139311
 GameObject:
@@ -2150,7 +2152,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 250}
+  m_SizeDelta: {x: 300, y: 81.0098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686720589
 MonoBehaviour:
@@ -2531,8 +2533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 82.676575, y: 102.551735}
-  m_SizeDelta: {x: 103.5702, y: 45.0785}
+  m_AnchoredPosition: {x: 42.6, y: 20.7}
+  m_SizeDelta: {x: 102.9525, y: 45.0785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044525837
 MonoBehaviour:
@@ -2598,7 +2600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3b210d51bc42e234a9f3b3dacde84856, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67d34bb7b7d9f0949a505b6fb1edbb4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -1258,7 +1258,7 @@ MonoBehaviour:
   animOfPopUp: {fileID: 990373237490804210}
   nameForAnimPopUpOpen: PopUpOpen
   nameForAnimPopUpClose: PopUpClose
-  pointNativeAds: {fileID: 0}
+  pointNativeAds: {fileID: 6317939307807478957}
   specialBouder: {fileID: 122136186379914311}
   normalBouder: {fileID: 1568255667186281224}
   starNeedUnlockText: {fileID: 9173071774171664583}
@@ -1346,6 +1346,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!1 &6317939307807478957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8443345509043727391}
+  m_Layer: 5
+  m_Name: PointNative
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8443345509043727391
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317939307807478957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8810068758895243221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -493, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7106751640041832140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1853,7 @@ RectTransform:
   - {fileID: 7076323500344617926}
   - {fileID: 2107894759945688533}
   - {fileID: 6849573543159078720}
+  - {fileID: 8443345509043727391}
   m_Father: {fileID: 3212194972025725519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

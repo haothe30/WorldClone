@@ -10,6 +10,7 @@ public class EndPanel : UIProperties
     [SerializeField] GameObject[] lstStar;
     //[SerializeField] Text ticketText, desWinText, desLoseText;
     [SerializeField] Image loseImg, winImg;
+    [SerializeField] UIProperties thisUI;
     //string[] desWin3Star = { "You did it!", "Excellent!", "Impressive!", "Fantastic!", "You Nailed it!" };
     //string[] desWin2Star = { "You did it!", "Impressive!", "Nearly perfect!" };
     //string[] desWin1Star = { "Don't give up!", "Still Messy", "Not so clean" };
@@ -27,6 +28,10 @@ public class EndPanel : UIProperties
     public override void OpenMe()
     {
         base.OpenMe();
+        if(thisUI != null)
+        {
+            thisUI.ShowNativeAds();
+        }
         winPanel.SetActive(false);
         //effectFireWork.SetActive(false);
         //for (int i = 0; i < effectFireWork.transform.childCount; i++)

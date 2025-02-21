@@ -233,7 +233,8 @@ public class DataManager : MonoBehaviour
 #else
         AdsManager.instance.InitAdsAfterGDPR();
 #endif
-        //SetData();
+        Debug.LogError("==================================== call GDPR");
+        SetData();
     }
     public void AddTicket(int number)
     {
@@ -792,7 +793,7 @@ public class DataManager : MonoBehaviour
         DataParamManager.displayRemoveAds = null;
         DataParamManager.displayTicket = null;
         ObjectPoolManagerHaveScript.Instance.ClearAllPool();
-
+        AdsManager.instance.ActiveNativeAds(false, -1, null);
     }
     public void ShowPopUpMess(Vector3 scale, Vector2 pos, string des)
     {
@@ -816,7 +817,7 @@ public class DataManager : MonoBehaviour
 
         // loadingPanel.CreateBegin();
 
-        SetData();
+        //SetData();
         Debug.LogError("============== json:" + JsonMapper.ToJson(dataLevel));
     }
     public void SetCurrentLevel(int indexLevel)
@@ -849,6 +850,7 @@ public class DataManager : MonoBehaviour
     }
     public void SetData()
     {
+        Debug.LogError("================================= setdata");
         CalculateData();
         SetCurrentLevel(0);
     }

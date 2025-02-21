@@ -102,6 +102,8 @@ public class LoadingPanel : MonoBehaviour
         if (!string.IsNullOrEmpty(_nameNextScene) /*&& SceneManager.GetActiveScene().name != "Menu"*/)
         {
         }
+
+        DataManager.instance.ChangeSceneFunc();
     }
     bool logoScene = false;
     public void EventEndMaskIn()

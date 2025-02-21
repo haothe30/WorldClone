@@ -82,11 +82,15 @@ public class SettingPanel : UIProperties
     public override void CloseMe()
     {
         base.CloseMe();
-        if (DataManager.instance.GetSelectLevelPanel() != null)
-            DataManager.instance.GetSelectLevelPanel().OpenMe();
+       
         if (SceneManager.GetActiveScene().name == "Play")
         {
             GamePlayManager.Instance.ChangeStageDisplayPopUp(false);
+        }
+        else
+        {
+            if (DataManager.instance.GetSelectLevelPanel() != null)
+                DataManager.instance.GetSelectLevelPanel().OpenMe();
         }
     }
     public void BtnSound()

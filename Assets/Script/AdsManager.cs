@@ -129,13 +129,15 @@ public class AdsManager : MonoBehaviour
         if (testAds)
         {
             idNative = nativeIdAndroidTest;
+            Debug.LogError("============= id test native ads:" + idNative);
+
         }
         else
         {
-            if(string.IsNullOrEmpty(DataParamManager.idNativeAds))
+            if (string.IsNullOrEmpty(DataParamManager.idNativeAds))
             {
                 idNative = nativeId;
-            }    
+            }
             else
             {
                 idNative = DataParamManager.idNativeAds;
@@ -357,7 +359,7 @@ public class AdsManager : MonoBehaviour
             Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_impression", AdParameters);
         }
     }
-    
+
 
     public void InitAdsAfterGDPR()
     {
@@ -408,7 +410,7 @@ public class AdsManager : MonoBehaviour
         //adaptiveSize =
         //  AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(Screen.width / 2);
 
-        _bannerView = new BannerView(bannerAdapterId, AdSize.Leaderboard, AdPosition.Top);
+        _bannerView = new BannerView(bannerAdapterId, AdSize.Banner, AdPosition.Top);
 
         // Register for ad events.
         _bannerView.OnBannerAdLoaded += OnBannerAdapterAdLoaded;
@@ -472,7 +474,7 @@ public class AdsManager : MonoBehaviour
         //  adRequest.Extras.Add("collapsible_request_id", Guid.NewGuid().ToString());
         // Load a banner ad.
         _bannerView.LoadAd(adRequest);
-        //   Debug.LogError("=========== init collapsed banner");
+         Debug.LogError("=========== init collapsed banner");
     }
 
     public void AutoShowBannerAdaptive()
@@ -506,23 +508,23 @@ public class AdsManager : MonoBehaviour
     }
     private void OnBannerAdapterAdLoadFailed(LoadAdError obj)
     {
-        //  Debug.LogError("================= banner adapter load false:" + obj.ToString());
+          Debug.LogError("================= banner adapter load false:" + obj.ToString());
     }
 
     private void OnBannerAdapterAdLoaded()
     {
         if (SceneManager.GetActiveScene().name == "Loading")
         {
-            //   Debug.LogError("========== load xog banner collapsed roi nhung ơ scene loading nen an di");
+               Debug.LogError("========== load xog banner collapsed roi nhung ơ scene loading nen an di");
             HideBannerAds();
         }
         else
         {
             ShowBannerAds();
-            //   Debug.LogError("================= banner collapsed load success");
+              Debug.LogError("================= banner collapsed load success");
         }
     }
-    
+
     LevelPlayBannerAd bannerAd;
     void InitMREC()
     {
@@ -531,7 +533,7 @@ public class AdsManager : MonoBehaviour
         LevelPlayAdSize adSize = LevelPlayAdSize.BANNER;
 
         // Set the placement name
-         bannerAd = new LevelPlayBannerAd(idMREC, LevelPlayAdSize.LARGE, LevelPlayBannerPosition.BottomCenter);
+        bannerAd = new LevelPlayBannerAd(idMREC, LevelPlayAdSize.LARGE, LevelPlayBannerPosition.BottomCenter);
 
         bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
         bannerAd.OnAdLoadFailed += BannerOnAdLoadFailedEvent;
@@ -545,37 +547,36 @@ public class AdsManager : MonoBehaviour
         bannerAd.LoadAd();
 
         // Create the banner object and set the ad unit id 
-
     }
-    void BannerOnAdLoadedEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdLoadedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= banner load thành công");
     }
-    void BannerOnAdLoadFailedEvent(LevelPlayAdError ironSourceError) 
+    void BannerOnAdLoadFailedEvent(LevelPlayAdError ironSourceError)
     {
         Debug.LogError("============================= banner load fail");
     }
-    void BannerOnAdClickedEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdClickedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= click vào banner");
     }
-    void BannerOnAdDisplayedEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdDisplayedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= show banner thành công");
     }
-    void BannerOnAdDisplayFailedEvent(LevelPlayAdDisplayInfoError adInfoError) 
+    void BannerOnAdDisplayFailedEvent(LevelPlayAdDisplayInfoError adInfoError)
     {
         Debug.LogError("============================= show banner fail");
     }
-    void BannerOnAdCollapsedEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdCollapsedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= collap banner thành công");
     }
-    void BannerOnAdLeftApplicationEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdLeftApplicationEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= witch app banner");
     }
-    void BannerOnAdExpandedEvent(LevelPlayAdInfo adInfo) 
+    void BannerOnAdExpandedEvent(LevelPlayAdInfo adInfo)
     {
         Debug.LogError("============================= expand banner thành công");
     }
@@ -596,11 +597,14 @@ public class AdsManager : MonoBehaviour
 
         if (DataManager.instance.AnAds || DataManager.instance.SaveData().removeAds)
             return;
-        bannerAd.ShowAd();
+
+        if (bannerAd != null)
+            bannerAd.ShowAd();
     }
     public void HideMREC()
     {
-        bannerAd.HideAd();
+        if (bannerAd != null)
+            bannerAd.HideAd();
     }
     public void InitAds()
     {
@@ -669,7 +673,7 @@ public class AdsManager : MonoBehaviour
             appOpenAd.Destroy();
             appOpenAd = null;
         }
-        // Debug.LogError("============== AOA id:" + aoaId);
+         Debug.LogError("============== AOA id:" + aoaId);
         AdRequest request = new AdRequest();
         AppOpenAd.Load(aoaId, request, (AppOpenAd ad, LoadAdError error) =>
          {
@@ -681,8 +685,8 @@ public class AdsManager : MonoBehaviour
                  return;
              }
 
-             //  Debug.LogError("===========App open ad loaded with response : "
-             //  + ad.GetResponseInfo());
+               Debug.LogError("===========App open ad loaded with response : "
+               + ad.GetResponseInfo());
 
              appOpenAd = ad;
              ad.OnAdFullScreenContentClosed += OnAppOpenDismissedEvent;
@@ -864,7 +868,8 @@ public class AdsManager : MonoBehaviour
     }
     public void RequestInterAds()
     {
-        if(!loadingInter){
+        if (!loadingInter)
+        {
             //MaxSdk.LoadInterstitial(interId);
             loadingInter = true;
             IronSource.Agent.loadInterstitial();
@@ -925,21 +930,20 @@ public class AdsManager : MonoBehaviour
     }
     public void ShowAOAAds(string _nameEventAOA)
     {
-
 #if !UNITY_EDITOR
         if (DataManager.instance != null && (DataManager.instance.SaveData().removeAds || DataManager.instance.AnAds))
             return;
-        //if (appOpenAd == null)
-        //{
-        //    return;
-        //}
-        //if (!appOpenAd.CanShowAd())
-        //    return;
-        if (MaxSdk.IsAppOpenAdReady(aoaId) /*appOpenAd.CanShowAd()*/)
+        if (appOpenAd == null)
+        {
+            return;
+        }
+        if (!appOpenAd.CanShowAd())
+            return;
+        if (/*MaxSdk.IsAppOpenAdReady(aoaId)*/ appOpenAd.CanShowAd())
         {
             nameEventAOA = _nameEventAOA;
-           // appOpenAd.Show();
-             MaxSdk.ShowAppOpenAd(aoaId);
+            appOpenAd.Show();
+             //MaxSdk.ShowAppOpenAd(aoaId);
             DataParamManager.ResumeFromAds = true;
         }
         else
@@ -947,11 +951,11 @@ public class AdsManager : MonoBehaviour
             RequestAOA();
         }
 #endif
-    }
 
+    }
     void RequestAOA()
     {
-        if(!loadingAOA)
+        if (!loadingAOA)
         {
             //MaxSdk.LoadAppOpenAd(aoaId);
             loadingAOA = true;
@@ -973,13 +977,13 @@ public class AdsManager : MonoBehaviour
         _ac();
 #else
 
-        if (/*IronSource.Agent.isRewardedVideoAvailable()*/MaxSdk.IsRewardedAdReady(videoId))
+        if (IronSource.Agent.isRewardedVideoAvailable() /*MaxSdk.IsRewardedAdReady(videoId)*/)
         {
             acreward = _ac;
             doneWatchAds = false;
             nameEventVideo = name;
-             MaxSdk.ShowRewardedAd(videoId);
-            //IronSource.Agent.showRewardedVideo(nameEventVideo);
+            // MaxSdk.ShowRewardedAd(videoId);
+            IronSource.Agent.showRewardedVideo(nameEventVideo);
             MusicManager.instance.MuteAllMusic();
             MusicManager.instance.MuteAllSound();
             DataParamManager.ResumeFromAds = true;

@@ -227,7 +227,7 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
     {
         if (!fetchTask.IsCompleted)
         {
-            //  Debug.LogError("============== not complete fetch");
+            Debug.LogError("============== not complete fetch");
             dataController.CallGDPR();
 
             return;
@@ -237,7 +237,7 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
         var info = remoteConfig.Info;
         if (info.LastFetchStatus != LastFetchStatus.Success)
         {
-            //  Debug.LogError($"================={nameof(FetchComplete)} was unsuccessful\n{nameof(info.LastFetchStatus)}: {info.LastFetchStatus}");
+            Debug.LogError($"================={nameof(FetchComplete)} was unsuccessful\n{nameof(info.LastFetchStatus)}: {info.LastFetchStatus}");
             dataController.CallGDPR();
             return;
         }
@@ -245,15 +245,18 @@ ByteBrew.requestForAppTrackingTransparency((status) =>
           .ContinueWithOnMainThread(
             task =>
             {
-                //   Debug.LogError($"====Remote data loaded and ready for use. Last fetch time {info.FetchTime}.");
+                  Debug.LogError($"====Remote data loaded and ready for use. Last fetch time {info.FetchTime}.");
             });
 
         DataParamManager.timeDelayShowAds = float.Parse(FirebaseRemoteConfig.GetInstance(app).GetValue(remoteDefault[0].key).StringValue);
         DataParamManager.timeCollapsedBannerFL = float.Parse(FirebaseRemoteConfig.GetInstance(app).GetValue(remoteDefault[1].key).StringValue);
         dataController.GetData(FirebaseRemoteConfig.GetInstance(app).GetValue(remoteDefault[2].key).StringValue);
         DataParamManager.idNativeAds = FirebaseRemoteConfig.GetInstance(app).GetValue(remoteDefault[3].key).StringValue;
-        dataController.CallGDPR();
 
+        Debug.LogError("============== oke GDPR" + DataParamManager.idNativeAds);
+
+        dataController.CallGDPR();
+      
 
     }
 
