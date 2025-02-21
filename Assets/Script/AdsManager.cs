@@ -408,9 +408,9 @@ public class AdsManager : MonoBehaviour
         }
 
         //adaptiveSize =
-        //  AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(Screen.width / 2);
+        //  AdSize.GetLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
 
-        _bannerView = new BannerView(bannerAdapterId, AdSize.Banner, AdPosition.Top);
+        _bannerView = new BannerView(bannerAdapterId, AdSize.SmartBanner, AdPosition.Top);
 
         // Register for ad events.
         _bannerView.OnBannerAdLoaded += OnBannerAdapterAdLoaded;
@@ -491,12 +491,12 @@ public class AdsManager : MonoBehaviour
                 adRequest = new AdRequest();
                 adRequest.Extras.Add("collapsible", "top");
                 _bannerView.LoadAd(adRequest);
-                //  Debug.LogError("================= Auto Load Show Adapter Banner");
+                  Debug.LogError("================= Auto Load Show Adapter Banner");
             }
         }
         else
         {
-            //  Debug.LogError("================= Cannot Auto Load Show Adapter Banner");
+              Debug.LogError("================= Cannot Auto Load Show Adapter Banner");
         }
 
 
@@ -521,7 +521,8 @@ public class AdsManager : MonoBehaviour
         else
         {
             ShowBannerAds();
-              Debug.LogError("================= banner collapsed load success");
+            StartCoroutine(DelayAutoSpawnBannerAdaptive());
+            Debug.LogError("================= banner collapsed load success");
         }
     }
 
